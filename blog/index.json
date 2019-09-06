@@ -1,0 +1,9 @@
+[
+    {
+        "ref": "https://semeniuc.ml/blog/my-first-post/",
+        "title": "New static site with hugo :)",
+        "section": "blog",
+        "date" : "2019.09.05",
+        "body": "Switched from wordpress, making waves here!\n"
+    }
+]
