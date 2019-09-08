@@ -6,10 +6,20 @@
     <description>Recent content on Eric Semeniuc | Dev, Thinker, Doer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 05 Sep 2019 18:30:03 -0700</lastBuildDate>
+    <lastBuildDate>Sun, 08 Sep 2019 08:01:32 -0700</lastBuildDate>
     
 	<atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Canon MF4770dn Printer Setup on Arch Linux</title>
+      <link>https://semeniuc.ml/blog/canon-printer-arch/</link>
+      <pubDate>Sun, 08 Sep 2019 08:01:32 -0700</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/canon-printer-arch/</guid>
+      <description>Install pacaur or substitute for your favourite AUR helper
+pacaur -S cndrvcups-lb-bin sudo system-config-printer   Click &amp;ldquo;Add&amp;rdquo; button Under the &amp;ldquo;Devices&amp;rdquo; sidebar, expand the &amp;ldquo;Network Printer&amp;rdquo; item Wait several seconds and &amp;ldquo;Canon MF4700 (192.168.XXX.XXX)&amp;rdquo; will appear. Click it Keep the default host, port number, and conection Kee the default printer name and location Print a test page :)  </description>
+    </item>
     
     <item>
       <title>New static site with hugo :)</title>
