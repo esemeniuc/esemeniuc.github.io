@@ -1,7 +1,7 @@
 [
     {
         "ref": "https://semeniuc.ml/blog/canon-printer-arch/",
-        "title": "Canon MF4770dn Printer Setup on Arch Linux",
+        "title": "Canon MF4770n Network Printer Setup on Arch Linux",
         "section": "blog",
         "date" : "2019.09.08",
         "body": "Install pacaur or substitute for your favourite AUR helper\npacaur -S cndrvcups-lb-bin sudo system-config-printer   Click \u0026ldquo;Add\u0026rdquo; button Under the \u0026ldquo;Devices\u0026rdquo; sidebar, expand the \u0026ldquo;Network Printer\u0026rdquo; item Wait several seconds and \u0026ldquo;Canon MF4700 (192.168.XXX.XXX)\u0026rdquo; will appear. Click it Keep the default host, port number, and conection Kee the default printer name and location Print a test page :)  "
