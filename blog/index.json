@@ -1,5 +1,13 @@
 [
     {
+        "ref": "https://semeniuc.ml/blog/using-alpine-linux-on-qemu/",
+        "title": "Using Alpine Linux on QEMU",
+        "section": "blog",
+        "date" : "2019.09.13",
+        "body": " Get QEMU\nsudo pacman -S qemu  Get Alpine Linux\nwget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso  Run QEMU\nqemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off  Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the \u0026ldquo;user\u0026rdquo; network interface, disables ipv6\n Enable the network adapter\nifconfig eth0 up udhcpc  Test network connection\nnslookup google.com  Note: ICMP ping doesn\u0026rsquo;t work in QEMU\n  "
+    }
+,
+    {
         "ref": "https://semeniuc.ml/blog/canon-printer-arch/",
         "title": "Canon MF4770n Network Printer Setup on Arch Linux",
         "section": "blog",

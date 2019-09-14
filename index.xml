@@ -6,10 +6,24 @@
     <description>Recent content on Eric Semeniuc | Dev, Thinker, Doer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Sep 2019 08:01:32 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 13 Sep 2019 18:15:19 -0700</lastBuildDate>
     
 	<atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Using Alpine Linux on QEMU</title>
+      <link>https://semeniuc.ml/blog/using-alpine-linux-on-qemu/</link>
+      <pubDate>Fri, 13 Sep 2019 18:15:19 -0700</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/using-alpine-linux-on-qemu/</guid>
+      <description>Get QEMU
+sudo pacman -S qemu  Get Alpine Linux
+wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso  Run QEMU
+qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off  Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &amp;ldquo;user&amp;rdquo; network interface, disables ipv6
+ Enable the network adapter
+ifconfig eth0 up udhcpc  Test network connection</description>
+    </item>
     
     <item>
       <title>Canon MF4770n Network Printer Setup on Arch Linux</title>
