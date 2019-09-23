@@ -22,4 +22,12 @@
         "date" : "2019.09.05",
         "body": "Switched from wordpress, making waves here!\n"
     }
+,
+    {
+        "ref": "https://semeniuc.ml/blog/swift3/",
+        "title": "",
+        "section": "blog",
+        "date" : "0001.01.01",
+        "body": "cat \u0026ldquo;options snd-hda-intel model=alc256-asus-mic\u0026rdquo; \u0026gt;\u0026gt; /etc/modprobe.d/sound.conf\n"
+    }
 ]

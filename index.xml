@@ -44,5 +44,14 @@ pacaur -S cndrvcups-lb-bin sudo system-config-printer   Click &amp;ldquo;Add&amp
       <description>Switched from wordpress, making waves here!</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://semeniuc.ml/blog/swift3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/swift3/</guid>
+      <description>cat &amp;ldquo;options snd-hda-intel model=alc256-asus-mic&amp;rdquo; &amp;gt;&amp;gt; /etc/modprobe.d/sound.conf</description>
+    </item>
+    
   </channel>
 </rss>
