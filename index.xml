@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Eric Semeniuc | Dev, Thinker, Doer</title>
@@ -6,10 +6,30 @@
     <description>Recent content on Eric Semeniuc | Dev, Thinker, Doer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Sep 2019 18:15:19 -0700</lastBuildDate>
+    <lastBuildDate>Tue, 29 Oct 2019 07:46:41 -0700</lastBuildDate>
     
 	<atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Enable 3.5mm Headset Microphone on Acer Swift 3 with Arch Linux</title>
+      <link>https://semeniuc.ml/blog/enable-headphone-jack-on-swift3-linux/</link>
+      <pubDate>Tue, 29 Oct 2019 07:46:41 -0700</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/enable-headphone-jack-on-swift3-linux/</guid>
+      <description> Final solution cat &amp;quot;options snd-hda-intel model=alc256-asus-mic&amp;quot; &amp;gt;&amp;gt; /etc/modprobe.d/sound.conf  Then restart
+For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service  Remove sound driver sudo modprobe -r snd_hda_intel  Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic  Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service  </description>
+    </item>
+    
+    <item>
+      <title>Move All i3 Workspaces to Monitor</title>
+      <link>https://semeniuc.ml/blog/move-all-i3-workspaces-to-monitor/</link>
+      <pubDate>Tue, 29 Oct 2019 07:46:41 -0700</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/move-all-i3-workspaces-to-monitor/</guid>
+      <description>This moves everything to HDMI1
+for i in {9..1}; do i3-msg &amp;quot;workspace ${i}, move workspace to output HDMI1&amp;quot;; done  </description>
+    </item>
     
     <item>
       <title>Using Alpine Linux on QEMU</title>
@@ -46,11 +66,12 @@ pacaur -S cndrvcups-lb-bin sudo system-config-printer   Click &amp;ldquo;Add&amp
     
     <item>
       <title></title>
-      <link>https://semeniuc.ml/blog/swift3/</link>
+      <link>https://semeniuc.ml/blog/closures/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://semeniuc.ml/blog/swift3/</guid>
-      <description>cat &amp;ldquo;options snd-hda-intel model=alc256-asus-mic&amp;rdquo; &amp;gt;&amp;gt; /etc/modprobe.d/sound.conf</description>
+      <guid>https://semeniuc.ml/blog/closures/</guid>
+      <description>let a = function(f) { return function(x) { console.log(&amp;lsquo;hi&amp;rsquo;); return f(x)(f); }(f); } a(a);
+/* let a = function(f) { return function(x) { console.log(&amp;lsquo;hi&amp;rsquo;); return f(x)(f); }; } a(a)(a); */</description>
     </item>
     
   </channel>

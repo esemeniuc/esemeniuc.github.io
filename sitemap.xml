@@ -1,15 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>https://semeniuc.ml/blog/</loc>
-    <lastmod>2019-09-13T18:15:19-07:00</lastmod>
+    <lastmod>2019-10-29T07:46:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://semeniuc.ml/blog/enable-headphone-jack-on-swift3-linux/</loc>
+    <lastmod>2019-10-29T07:46:41-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://semeniuc.ml/</loc>
-    <lastmod>2019-09-13T18:15:19-07:00</lastmod>
+    <lastmod>2019-10-29T07:46:41-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://semeniuc.ml/blog/move-all-i3-workspaces-to-monitor/</loc>
+    <lastmod>2019-10-29T07:46:41-07:00</lastmod>
   </url>
   
   <url>
@@ -28,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://semeniuc.ml/blog/swift3/</loc>
+    <loc>https://semeniuc.ml/blog/closures/</loc>
     <priority>0</priority>
   </url>
   
