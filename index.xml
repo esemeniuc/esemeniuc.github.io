@@ -6,10 +6,21 @@
     <description>Recent content on Eric Semeniuc | Dev, Thinker, Doer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Oct 2019 07:46:41 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 09 Nov 2019 10:49:07 -0800</lastBuildDate>
     
 	<atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Add Keyboard Shortcuts to Jupyter Lab</title>
+      <link>https://semeniuc.ml/blog/add-keyboard-shortcuts-to-jupyter-lab/</link>
+      <pubDate>Sat, 09 Nov 2019 10:49:07 -0800</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/add-keyboard-shortcuts-to-jupyter-lab/</guid>
+      <description> Via config file Edit with your favourite editor:
+~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings  Via web interface Settings -&amp;gt; Advanced Settings Editor -&amp;gt; Keyboard Shortcuts
+Example to use Shift+D to restart and run all cells { &amp;quot;shortcuts&amp;quot;:[ { &amp;quot;command&amp;quot;:&amp;quot;runmenu:restart-and-run-all&amp;quot;, &amp;quot;keys&amp;quot;:[ &amp;quot;Shift D&amp;quot; ], &amp;quot;selector&amp;quot;:&amp;quot;[data-jp-code-runner]&amp;quot; } ] }  </description>
+    </item>
     
     <item>
       <title>Enable 3.5mm Headset Microphone on Acer Swift 3 with Arch Linux</title>

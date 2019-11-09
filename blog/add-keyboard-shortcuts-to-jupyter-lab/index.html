@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>
+      
+          Add Keyboard Shortcuts to Jupyter Lab - Eric Semeniuc | Dev, Thinker, Doer
+      
+  </title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Eric Semeniuc" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://semeniuc.ml/img/favicon.ico">
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://semeniuc.ml/style.min.fa9adc71352e18497c5586863206c89ba474bc37bb749097f5d936ed9c671771.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  
+  
+
+  <meta property="og:title" content="Add Keyboard Shortcuts to Jupyter Lab" />
+<meta property="og:description" content=" Via config file Edit with your favourite editor:
+~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings  Via web interface Settings -&gt; Advanced Settings Editor -&gt; Keyboard Shortcuts
+Example to use Shift&#43;D to restart and run all cells { &quot;shortcuts&quot;:[ { &quot;command&quot;:&quot;runmenu:restart-and-run-all&quot;, &quot;keys&quot;:[ &quot;Shift D&quot; ], &quot;selector&quot;:&quot;[data-jp-code-runner]&quot; } ] }  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://semeniuc.ml/blog/add-keyboard-shortcuts-to-jupyter-lab/" />
+<meta property="article:published_time" content="2019-11-09T10:49:07-08:00" />
+<meta property="article:modified_time" content="2019-11-09T10:49:07-08:00" />
+<meta itemprop="name" content="Add Keyboard Shortcuts to Jupyter Lab">
+<meta itemprop="description" content=" Via config file Edit with your favourite editor:
+~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings  Via web interface Settings -&gt; Advanced Settings Editor -&gt; Keyboard Shortcuts
+Example to use Shift&#43;D to restart and run all cells { &quot;shortcuts&quot;:[ { &quot;command&quot;:&quot;runmenu:restart-and-run-all&quot;, &quot;keys&quot;:[ &quot;Shift D&quot; ], &quot;selector&quot;:&quot;[data-jp-code-runner]&quot; } ] }  ">
+
+
+<meta itemprop="datePublished" content="2019-11-09T10:49:07-08:00" />
+<meta itemprop="dateModified" content="2019-11-09T10:49:07-08:00" />
+<meta itemprop="wordCount" content="42">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Add Keyboard Shortcuts to Jupyter Lab"/>
+<meta name="twitter:description" content=" Via config file Edit with your favourite editor:
+~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings  Via web interface Settings -&gt; Advanced Settings Editor -&gt; Keyboard Shortcuts
+Example to use Shift&#43;D to restart and run all cells { &quot;shortcuts&quot;:[ { &quot;command&quot;:&quot;runmenu:restart-and-run-all&quot;, &quot;keys&quot;:[ &quot;Shift D&quot; ], &quot;selector&quot;:&quot;[data-jp-code-runner]&quot; } ] }  "/>
+
+  <!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+  <!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+  <![endif]-->
+
+  </head>
+
+  <body>
+    
+  <h1>Add Keyboard Shortcuts to Jupyter Lab</h1>
+  <header>
+  
+  <div class="avatar">
+    <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg">
+    <a href="https://semeniuc.ml/"><img src="https://semeniuc.ml//img/avatar-border.svg"></a>
+  </div>
+  
+  <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
+</header>
+
+  
+  
+  <p class="date">November 9, 2019</p>
+  
+  <div id="contentBody">
+    
+
+<h2 id="via-config-file">Via config file</h2>
+
+<p>Edit with your favourite editor:</p>
+
+<pre><code>~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings
+</code></pre>
+
+<h2 id="via-web-interface">Via web interface</h2>
+
+<p>Settings -&gt; Advanced Settings Editor -&gt; Keyboard Shortcuts</p>
+
+<h3 id="example-to-use-shift-d-to-restart-and-run-all-cells">Example to use Shift+D to restart and run all cells</h3>
+
+<pre><code class="language-json">{
+    &quot;shortcuts&quot;:[
+        {
+            &quot;command&quot;:&quot;runmenu:restart-and-run-all&quot;,
+            &quot;keys&quot;:[
+                &quot;Shift D&quot;
+            ],
+            &quot;selector&quot;:&quot;[data-jp-code-runner]&quot;
+        }
+    ]
+}
+</code></pre>
+
+  </div>
+  <footer>
+  <p>
+  &copy; 2019 Eric Semeniuc.
+  Powered by <a href="https://gohugo.io/">Hugo</a>
+  using the <a href="https://github.com/koirand/pulp/">pulp</a> theme.
+  </p>
+</footer>
+
+
+  </body>
+</html>

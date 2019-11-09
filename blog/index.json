@@ -1,5 +1,13 @@
 [
     {
+        "ref": "https://semeniuc.ml/blog/add-keyboard-shortcuts-to-jupyter-lab/",
+        "title": "Add Keyboard Shortcuts to Jupyter Lab",
+        "section": "blog",
+        "date" : "2019.11.09",
+        "body": " Via config file Edit with your favourite editor:\n~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings  Via web interface Settings -\u0026gt; Advanced Settings Editor -\u0026gt; Keyboard Shortcuts\nExample to use Shift+D to restart and run all cells { \u0026quot;shortcuts\u0026quot;:[ { \u0026quot;command\u0026quot;:\u0026quot;runmenu:restart-and-run-all\u0026quot;, \u0026quot;keys\u0026quot;:[ \u0026quot;Shift D\u0026quot; ], \u0026quot;selector\u0026quot;:\u0026quot;[data-jp-code-runner]\u0026quot; } ] }  "
+    }
+,
+    {
         "ref": "https://semeniuc.ml/blog/enable-headphone-jack-on-swift3-linux/",
         "title": "Enable 3.5mm Headset Microphone on Acer Swift 3 with Arch Linux",
         "section": "blog",
