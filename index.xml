@@ -6,10 +6,22 @@
     <description>Recent content on Eric Semeniuc | Dev, Thinker, Doer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Nov 2019 10:49:07 -0800</lastBuildDate>
+    <lastBuildDate>Mon, 16 Mar 2020 09:30:01 -0700</lastBuildDate>
     
 	<atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How To Use Go 1.14 Modules With Local Packages</title>
+      <link>https://semeniuc.ml/blog/how-to-use-go-1.14-modules-with-local-packages/</link>
+      <pubDate>Mon, 16 Mar 2020 09:30:01 -0700</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/how-to-use-go-1.14-modules-with-local-packages/</guid>
+      <description>Let&amp;rsquo;s do a simple example: you want to create a package foo which has your business logic, and want to have a small main driver (ie. make it executable, and not a library only).
+Starting out Here&amp;rsquo;s our starting folder structure:
+. ├── README.md └── main.go Contents of main.go:
+package main import &amp;#34;fmt&amp;#34; func main() { fmt.Println(&amp;#34;hi&amp;#34;) } Adding a package We want to make a package foo that has logic, so we make a directory for foo, and foo/foo.</description>
+    </item>
     
     <item>
       <title>Add Keyboard Shortcuts to Jupyter Lab</title>
@@ -17,9 +29,9 @@
       <pubDate>Sat, 09 Nov 2019 10:49:07 -0800</pubDate>
       
       <guid>https://semeniuc.ml/blog/add-keyboard-shortcuts-to-jupyter-lab/</guid>
-      <description> Via config file Edit with your favourite editor:
-~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings  Via web interface Settings -&amp;gt; Advanced Settings Editor -&amp;gt; Keyboard Shortcuts
-Example to use Shift+D to restart and run all cells { &amp;quot;shortcuts&amp;quot;:[ { &amp;quot;command&amp;quot;:&amp;quot;runmenu:restart-and-run-all&amp;quot;, &amp;quot;keys&amp;quot;:[ &amp;quot;Shift D&amp;quot; ], &amp;quot;selector&amp;quot;:&amp;quot;[data-jp-code-runner]&amp;quot; } ] }  </description>
+      <description>Via config file Edit with your favourite editor:
+~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings Via web interface Settings -&amp;gt; Advanced Settings Editor -&amp;gt; Keyboard Shortcuts
+Example to use Shift+D to restart and run all cells { &amp;#34;shortcuts&amp;#34;:[ { &amp;#34;command&amp;#34;:&amp;#34;runmenu:restart-and-run-all&amp;#34;, &amp;#34;keys&amp;#34;:[ &amp;#34;Shift D&amp;#34; ], &amp;#34;selector&amp;#34;:&amp;#34;[data-jp-code-runner]&amp;#34; } ] } </description>
     </item>
     
     <item>
@@ -28,8 +40,8 @@ Example to use Shift+D to restart and run all cells { &amp;quot;shortcuts&amp;qu
       <pubDate>Tue, 29 Oct 2019 07:46:41 -0700</pubDate>
       
       <guid>https://semeniuc.ml/blog/enable-headphone-jack-on-swift3-linux/</guid>
-      <description> Final solution cat &amp;quot;options snd-hda-intel model=alc256-asus-mic&amp;quot; &amp;gt;&amp;gt; /etc/modprobe.d/sound.conf  Then restart
-For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service  Remove sound driver sudo modprobe -r snd_hda_intel  Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic  Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service  </description>
+      <description>Final solution cat &amp;#34;options snd-hda-intel model=alc256-asus-mic&amp;#34; &amp;gt;&amp;gt; /etc/modprobe.d/sound.conf Then restart
+For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service Remove sound driver sudo modprobe -r snd_hda_intel Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service </description>
     </item>
     
     <item>
@@ -39,7 +51,7 @@ For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --
       
       <guid>https://semeniuc.ml/blog/move-all-i3-workspaces-to-monitor/</guid>
       <description>This moves everything to HDMI1
-for i in {9..1}; do i3-msg &amp;quot;workspace ${i}, move workspace to output HDMI1&amp;quot;; done  </description>
+for i in {9..1}; do i3-msg &amp;#34;workspace ${i}, move workspace to output HDMI1&amp;#34;; done </description>
     </item>
     
     <item>
@@ -48,12 +60,8 @@ for i in {9..1}; do i3-msg &amp;quot;workspace ${i}, move workspace to output HD
       <pubDate>Fri, 13 Sep 2019 18:15:19 -0700</pubDate>
       
       <guid>https://semeniuc.ml/blog/using-alpine-linux-on-qemu/</guid>
-      <description>Get QEMU
-sudo pacman -S qemu  Get Alpine Linux
-wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso  Run QEMU
-qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off  Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &amp;ldquo;user&amp;rdquo; network interface, disables ipv6
- Enable the network adapter
-ifconfig eth0 up udhcpc  Test network connection</description>
+      <description>Get QEMU  sudo pacman -S qemu Get Alpine Linux  wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso Run QEMU  qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &amp;ldquo;user&amp;rdquo; network interface, disables ipv6
+Enable the network adapter  ifconfig eth0 up udhcpc Test network connection  nslookup google.</description>
     </item>
     
     <item>
@@ -63,7 +71,7 @@ ifconfig eth0 up udhcpc  Test network connection</description>
       
       <guid>https://semeniuc.ml/blog/canon-printer-arch/</guid>
       <description>Install pacaur or substitute for your favourite AUR helper
-pacaur -S cndrvcups-lb-bin sudo system-config-printer   Click &amp;ldquo;Add&amp;rdquo; button Under the &amp;ldquo;Devices&amp;rdquo; sidebar, expand the &amp;ldquo;Network Printer&amp;rdquo; item Wait several seconds and &amp;ldquo;Canon MF4700 (192.168.XXX.XXX)&amp;rdquo; will appear. Click it Keep the default host, port number, and conection Kee the default printer name and location Print a test page :)  </description>
+pacaur -S cndrvcups-lb-bin sudo system-config-printer  Click &amp;ldquo;Add&amp;rdquo; button Under the &amp;ldquo;Devices&amp;rdquo; sidebar, expand the &amp;ldquo;Network Printer&amp;rdquo; item Wait several seconds and &amp;ldquo;Canon MF4700 (192.168.XXX.XXX)&amp;rdquo; will appear. Click it Keep the default host, port number, and conection Kee the default printer name and location Print a test page :)  </description>
     </item>
     
     <item>
@@ -73,16 +81,6 @@ pacaur -S cndrvcups-lb-bin sudo system-config-printer   Click &amp;ldquo;Add&amp
       
       <guid>https://semeniuc.ml/blog/my-first-post/</guid>
       <description>Switched from wordpress, making waves here!</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://semeniuc.ml/blog/closures/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://semeniuc.ml/blog/closures/</guid>
-      <description>let a = function(f) { return function(x) { console.log(&amp;lsquo;hi&amp;rsquo;); return f(x)(f); }(f); } a(a);
-/* let a = function(f) { return function(x) { console.log(&amp;lsquo;hi&amp;rsquo;); return f(x)(f); }; } a(a)(a); */</description>
     </item>
     
   </channel>

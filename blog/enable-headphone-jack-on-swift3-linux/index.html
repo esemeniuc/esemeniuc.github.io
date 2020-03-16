@@ -17,35 +17,33 @@
   
   
   
-  <link rel="stylesheet" href="https://semeniuc.ml/style.min.fa9adc71352e18497c5586863206c89ba474bc37bb749097f5d936ed9c671771.css">
+  <link rel="stylesheet" href="https://semeniuc.ml/style.min.a50e85be2191b7446e684667eb002377b10f833f329c30d9b701ea188a664750.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   
   
 
   <meta property="og:title" content="Enable 3.5mm Headset Microphone on Acer Swift 3 with Arch Linux" />
-<meta property="og:description" content=" Final solution cat &quot;options snd-hda-intel model=alc256-asus-mic&quot; &gt;&gt; /etc/modprobe.d/sound.conf  Then restart
-For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service  Remove sound driver sudo modprobe -r snd_hda_intel  Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic  Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service  " />
+<meta property="og:description" content="Final solution cat &#34;options snd-hda-intel model=alc256-asus-mic&#34; &gt;&gt; /etc/modprobe.d/sound.conf Then restart
+For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service Remove sound driver sudo modprobe -r snd_hda_intel Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://semeniuc.ml/blog/enable-headphone-jack-on-swift3-linux/" />
 <meta property="article:published_time" content="2019-10-29T07:46:41-07:00" />
 <meta property="article:modified_time" content="2019-10-29T07:46:41-07:00" />
 <meta itemprop="name" content="Enable 3.5mm Headset Microphone on Acer Swift 3 with Arch Linux">
-<meta itemprop="description" content=" Final solution cat &quot;options snd-hda-intel model=alc256-asus-mic&quot; &gt;&gt; /etc/modprobe.d/sound.conf  Then restart
-For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service  Remove sound driver sudo modprobe -r snd_hda_intel  Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic  Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service  ">
-
-
+<meta itemprop="description" content="Final solution cat &#34;options snd-hda-intel model=alc256-asus-mic&#34; &gt;&gt; /etc/modprobe.d/sound.conf Then restart
+For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service Remove sound driver sudo modprobe -r snd_hda_intel Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service ">
 <meta itemprop="datePublished" content="2019-10-29T07:46:41-07:00" />
 <meta itemprop="dateModified" content="2019-10-29T07:46:41-07:00" />
 <meta itemprop="wordCount" content="46">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://semeniuc.ml//img/avatar.jpg"/>
 <meta name="twitter:title" content="Enable 3.5mm Headset Microphone on Acer Swift 3 with Arch Linux"/>
-<meta name="twitter:description" content=" Final solution cat &quot;options snd-hda-intel model=alc256-asus-mic&quot; &gt;&gt; /etc/modprobe.d/sound.conf  Then restart
-For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service  Remove sound driver sudo modprobe -r snd_hda_intel  Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic  Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service  "/>
+<meta name="twitter:description" content="Final solution cat &#34;options snd-hda-intel model=alc256-asus-mic&#34; &gt;&gt; /etc/modprobe.d/sound.conf Then restart
+For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service Remove sound driver sudo modprobe -r snd_hda_intel Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service "/>
 
   <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -75,40 +73,28 @@ For Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --
   
   <p class="date">October 29, 2019</p>
   
+  <div id="tags">
+    <ul>
+      
+    </ul>
+  </div>
+  
   <div id="contentBody">
-    
-
-<h2 id="final-solution">Final solution</h2>
-
-<pre><code class="language-bash">cat &quot;options snd-hda-intel model=alc256-asus-mic&quot; &gt;&gt; /etc/modprobe.d/sound.conf
-</code></pre>
-
-<p>Then restart</p>
-
+    <h2 id="final-solution">Final solution</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#e6db74">&#34;options snd-hda-intel model=alc256-asus-mic&#34;</span> &gt;&gt; /etc/modprobe.d/sound.conf
+</code></pre></div><p>Then restart</p>
 <h3 id="for-testing">For Testing</h3>
-
 <h4 id="stop-pulseaudio">Stop pulseaudio</h4>
-
-<pre><code class="language-bash">systemctl --user stop pulseaudio.socket
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl --user stop pulseaudio.socket
 systemctl --user stop pulseaudio.service
-</code></pre>
-
-<h4 id="remove-sound-driver">Remove sound driver</h4>
-
-<pre><code class="language-bash">sudo modprobe -r snd_hda_intel
-</code></pre>
-
-<h4 id="switch-driver-modes">Switch driver modes</h4>
-
-<pre><code class="language-bash">sudo modprobe snd_hda_intel model=alc256-asus-mic
-</code></pre>
-
-<h4 id="re-enable-pulseaudio">Re-enable pulseaudio</h4>
-
+</code></pre></div><h4 id="remove-sound-driver">Remove sound driver</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo modprobe -r snd_hda_intel
+</code></pre></div><h4 id="switch-driver-modes">Switch driver modes</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo modprobe snd_hda_intel model<span style="color:#f92672">=</span>alc256-asus-mic
+</code></pre></div><h4 id="re-enable-pulseaudio">Re-enable pulseaudio</h4>
 <pre><code>systemctl --user start pulseaudio.socket
 systemctl --user start pulseaudio.service
 </code></pre>
-
   </div>
   <footer>
   <p>

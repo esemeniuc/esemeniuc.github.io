@@ -17,47 +17,33 @@
   
   
   
-  <link rel="stylesheet" href="https://semeniuc.ml/style.min.fa9adc71352e18497c5586863206c89ba474bc37bb749097f5d936ed9c671771.css">
+  <link rel="stylesheet" href="https://semeniuc.ml/style.min.a50e85be2191b7446e684667eb002377b10f833f329c30d9b701ea188a664750.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   
   
 
   <meta property="og:title" content="Using Alpine Linux on QEMU" />
-<meta property="og:description" content="Get QEMU
-sudo pacman -S qemu  Get Alpine Linux
-wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso  Run QEMU
-qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off  Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &ldquo;user&rdquo; network interface, disables ipv6
- Enable the network adapter
-ifconfig eth0 up udhcpc  Test network connection" />
+<meta property="og:description" content="Get QEMU  sudo pacman -S qemu Get Alpine Linux  wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso Run QEMU  qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &ldquo;user&rdquo; network interface, disables ipv6
+Enable the network adapter  ifconfig eth0 up udhcpc Test network connection  nslookup google." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://semeniuc.ml/blog/using-alpine-linux-on-qemu/" />
 <meta property="article:published_time" content="2019-09-13T18:15:19-07:00" />
 <meta property="article:modified_time" content="2019-09-13T18:15:19-07:00" />
 <meta itemprop="name" content="Using Alpine Linux on QEMU">
-<meta itemprop="description" content="Get QEMU
-sudo pacman -S qemu  Get Alpine Linux
-wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso  Run QEMU
-qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off  Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &ldquo;user&rdquo; network interface, disables ipv6
- Enable the network adapter
-ifconfig eth0 up udhcpc  Test network connection">
-
-
+<meta itemprop="description" content="Get QEMU  sudo pacman -S qemu Get Alpine Linux  wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso Run QEMU  qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &ldquo;user&rdquo; network interface, disables ipv6
+Enable the network adapter  ifconfig eth0 up udhcpc Test network connection  nslookup google.">
 <meta itemprop="datePublished" content="2019-09-13T18:15:19-07:00" />
 <meta itemprop="dateModified" content="2019-09-13T18:15:19-07:00" />
 <meta itemprop="wordCount" content="74">
 
 
 
-<meta itemprop="keywords" content="" />
-<meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://semeniuc.ml//img/avatar.jpg"/>
 <meta name="twitter:title" content="Using Alpine Linux on QEMU"/>
-<meta name="twitter:description" content="Get QEMU
-sudo pacman -S qemu  Get Alpine Linux
-wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso  Run QEMU
-qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off  Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &ldquo;user&rdquo; network interface, disables ipv6
- Enable the network adapter
-ifconfig eth0 up udhcpc  Test network connection"/>
+<meta name="twitter:description" content="Get QEMU  sudo pacman -S qemu Get Alpine Linux  wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso Run QEMU  qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the &ldquo;user&rdquo; network interface, disables ipv6
+Enable the network adapter  ifconfig eth0 up udhcpc Test network connection  nslookup google."/>
 
   <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -87,45 +73,42 @@ ifconfig eth0 up udhcpc  Test network connection"/>
   
   <p class="date">September 13, 2019</p>
   
+  <div id="tags">
+    <ul>
+      
+    </ul>
+  </div>
+  
   <div id="contentBody">
     <ol>
-<li><p>Get QEMU</p>
-
+<li>Get QEMU</li>
+</ol>
 <pre><code>sudo pacman -S qemu
-</code></pre></li>
-
-<li><p>Get Alpine Linux</p>
-
+</code></pre><ol start="2">
+<li>Get Alpine Linux</li>
+</ol>
 <pre><code>wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso
-</code></pre></li>
-
-<li><p>Run QEMU</p>
-
+</code></pre><ol start="3">
+<li>Run QEMU</li>
+</ol>
 <pre><code>qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off
-</code></pre>
-
-<p>Flags:
+</code></pre><p>Flags:
 -boot d: boot from CDROM
 -cdrom: load iso image
 -m 512: allocate 512MB RAM
 -enable-kvm: speeds up emulation on Linux hosts
--nic user,ipv6=off: uses the &ldquo;user&rdquo; network interface, disables ipv6</p></li>
-
-<li><p>Enable the network adapter</p>
-
+-nic user,ipv6=off: uses the &ldquo;user&rdquo; network interface, disables ipv6</p>
+<ol start="4">
+<li>Enable the network adapter</li>
+</ol>
 <pre><code>ifconfig eth0 up
 udhcpc
-</code></pre></li>
-
-<li><p>Test network connection</p>
-
-<pre><code>nslookup google.com
-</code></pre>
-
-<p>Note: ICMP ping doesn&rsquo;t work in QEMU</p></li>
+</code></pre><ol start="5">
+<li>Test network connection</li>
 </ol>
-
-<p><img src="https://semeniuc.ml/alpine-qemu.png" alt="Alpine QEMU screenshot" /></p>
+<pre><code>nslookup google.com
+</code></pre><p>Note: ICMP ping doesn&rsquo;t work in QEMU</p>
+<p><img src="https://semeniuc.ml/alpine-qemu.png" alt="Alpine QEMU screenshot"></p>
 
   </div>
   <footer>

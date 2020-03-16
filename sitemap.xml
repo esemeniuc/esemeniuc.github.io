@@ -3,17 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://semeniuc.ml/blog/add-keyboard-shortcuts-to-jupyter-lab/</loc>
-    <lastmod>2019-11-09T10:49:07-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://semeniuc.ml/blog/</loc>
-    <lastmod>2019-11-09T10:49:07-08:00</lastmod>
+    <lastmod>2020-03-16T09:30:01-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://semeniuc.ml/</loc>
+    <lastmod>2020-03-16T09:30:01-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://semeniuc.ml/blog/how-to-use-go-1.14-modules-with-local-packages/</loc>
+    <lastmod>2020-03-16T09:30:01-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://semeniuc.ml/blog/add-keyboard-shortcuts-to-jupyter-lab/</loc>
     <lastmod>2019-11-09T10:49:07-08:00</lastmod>
   </url>
   
@@ -40,11 +45,6 @@
   <url>
     <loc>https://semeniuc.ml/blog/my-first-post/</loc>
     <lastmod>2019-09-05T18:30:03-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://semeniuc.ml/blog/closures/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

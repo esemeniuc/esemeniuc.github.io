@@ -1,57 +1,64 @@
 [
     {
+        "ref": "https://semeniuc.ml/blog/how-to-use-go-1.14-modules-with-local-packages/",
+        "title": "How To Use Go 1.14 Modules With Local Packages",
+        "section": "blog",
+        "tags": null,
+        "date" : "2020.03.16",
+        "body": "Let\u0026rsquo;s do a simple example: you want to create a package foo which has your business logic, and want to have a small main driver (ie. make it executable, and not a library only).\nStarting out Here\u0026rsquo;s our starting folder structure:\n. ├── README.md └── main.go Contents of main.go:\npackage main import \u0026#34;fmt\u0026#34; func main() { fmt.Println(\u0026#34;hi\u0026#34;) } Adding a package We want to make a package foo that has logic, so we make a directory for foo, and foo/foo.go file with a doWork() function.\nNew folder structure:\n. ├── README.md ├── foo │ └── foo.go └── main.go Here\u0026rsquo;s the contents of foo/foo.go\npackage foo func DoWork() int { return 42 } Lets initialize the module:\n➜ cd foo \u0026amp;\u0026amp; go mod init foo go: creating new go.mod: module foo Here\u0026rsquo;s the layout now:\n. ├── README.md ├── foo │ ├── foo.go │ └── go.mod └── main.go Notice that foo/go.mod has been created with the contents:\nmodule foo go 1.14 We can run go mod tidy from the foo directory to automatically find all dependencies used in foo and download them.\nUsing our new package Now lets make use of foo in our main.go file.\npackage main import ( \u0026#34;fmt\u0026#34; \u0026#34;foo\u0026#34; ) func main() { fmt.Println(foo.DoWork()) } We also need to tell Go that we want to use a local package, so we need to make a new mod.go file from the project root.\n➜ cd .. \u0026amp;\u0026amp; go mod init main go: creating new go.mod: module main Here\u0026rsquo;s our folder structure now:\n. ├── README.md ├── foo │ ├── foo.go │ └── go.mod ├── go.mod └── main.go We need to tell the compiler that we want to use our local library, so we append replace foo =\u0026gt; ./foo to go.mod. Check the Go Wiki for more info about modules.\nThis is go.mod after the modification:\nmodule main go 1.14 replace foo =\u0026gt; ./foo Let\u0026rsquo;s run it\n➜ go run main go: found foo in foo v0.0.0-00010101000000-000000000000 42 It works! Also notice that our main go.mod file was automatically updated to add foo to the list of modules:\nmodule main go 1.14 replace foo =\u0026gt; ./foo require foo v0.0.0-00010101000000-000000000000 The require foo v0.0.0-00010101000000-000000000000 line tells the Go compiler which version of a dependency we are using. In this case, it\u0026rsquo;s unversioned since it\u0026rsquo;s local. If we used a library from GitHub, eg. graphql-go, we would have a line like github.com/graph-gophers/graphql-go v0.0.0-20200309224638-dae41bde9ef9.\nFinished Project See https://github.com/esemeniuc/goModuleDemo for the complete project\n"
+    }
+,
+    {
         "ref": "https://semeniuc.ml/blog/add-keyboard-shortcuts-to-jupyter-lab/",
         "title": "Add Keyboard Shortcuts to Jupyter Lab",
         "section": "blog",
+        "tags": null,
         "date" : "2019.11.09",
-        "body": " Via config file Edit with your favourite editor:\n~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings  Via web interface Settings -\u0026gt; Advanced Settings Editor -\u0026gt; Keyboard Shortcuts\nExample to use Shift+D to restart and run all cells { \u0026quot;shortcuts\u0026quot;:[ { \u0026quot;command\u0026quot;:\u0026quot;runmenu:restart-and-run-all\u0026quot;, \u0026quot;keys\u0026quot;:[ \u0026quot;Shift D\u0026quot; ], \u0026quot;selector\u0026quot;:\u0026quot;[data-jp-code-runner]\u0026quot; } ] }  "
+        "body": "Via config file Edit with your favourite editor:\n~/.jupyter/lab/user-settings/@jupyterlab/shortcuts-extension/shortcuts.jupyterlab-settings Via web interface Settings -\u0026gt; Advanced Settings Editor -\u0026gt; Keyboard Shortcuts\nExample to use Shift+D to restart and run all cells { \u0026#34;shortcuts\u0026#34;:[ { \u0026#34;command\u0026#34;:\u0026#34;runmenu:restart-and-run-all\u0026#34;, \u0026#34;keys\u0026#34;:[ \u0026#34;Shift D\u0026#34; ], \u0026#34;selector\u0026#34;:\u0026#34;[data-jp-code-runner]\u0026#34; } ] } "
     }
 ,
     {
         "ref": "https://semeniuc.ml/blog/enable-headphone-jack-on-swift3-linux/",
         "title": "Enable 3.5mm Headset Microphone on Acer Swift 3 with Arch Linux",
         "section": "blog",
+        "tags": null,
         "date" : "2019.10.29",
-        "body": " Final solution cat \u0026quot;options snd-hda-intel model=alc256-asus-mic\u0026quot; \u0026gt;\u0026gt; /etc/modprobe.d/sound.conf  Then restart\nFor Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service  Remove sound driver sudo modprobe -r snd_hda_intel  Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic  Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service  "
+        "body": "Final solution cat \u0026#34;options snd-hda-intel model=alc256-asus-mic\u0026#34; \u0026gt;\u0026gt; /etc/modprobe.d/sound.conf Then restart\nFor Testing Stop pulseaudio systemctl --user stop pulseaudio.socket systemctl --user stop pulseaudio.service Remove sound driver sudo modprobe -r snd_hda_intel Switch driver modes sudo modprobe snd_hda_intel model=alc256-asus-mic Re-enable pulseaudio systemctl --user start pulseaudio.socket systemctl --user start pulseaudio.service "
     }
 ,
     {
         "ref": "https://semeniuc.ml/blog/move-all-i3-workspaces-to-monitor/",
         "title": "Move All i3 Workspaces to Monitor",
         "section": "blog",
+        "tags": null,
         "date" : "2019.10.29",
-        "body": "This moves everything to HDMI1\nfor i in {9..1}; do i3-msg \u0026quot;workspace ${i}, move workspace to output HDMI1\u0026quot;; done  "
+        "body": "This moves everything to HDMI1\nfor i in {9..1}; do i3-msg \u0026#34;workspace ${i}, move workspace to output HDMI1\u0026#34;; done "
     }
 ,
     {
         "ref": "https://semeniuc.ml/blog/using-alpine-linux-on-qemu/",
         "title": "Using Alpine Linux on QEMU",
         "section": "blog",
+        "tags": null,
         "date" : "2019.09.13",
-        "body": " Get QEMU\nsudo pacman -S qemu  Get Alpine Linux\nwget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso  Run QEMU\nqemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off  Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the \u0026ldquo;user\u0026rdquo; network interface, disables ipv6\n Enable the network adapter\nifconfig eth0 up udhcpc  Test network connection\nnslookup google.com  Note: ICMP ping doesn\u0026rsquo;t work in QEMU\n  "
+        "body": " Get QEMU  sudo pacman -S qemu Get Alpine Linux  wget http://dl-cdn.alpinelinux.org/alpine/v3.10/releases/x86_64/alpine-standard-3.10.2-x86_64.iso Run QEMU  qemu-system-x86_64 -boot d -cdrom alpine-standard-3.10.2-x86_64.iso -m 512 -enable-kvm -nic user,ipv6=off Flags: -boot d: boot from CDROM -cdrom: load iso image -m 512: allocate 512MB RAM -enable-kvm: speeds up emulation on Linux hosts -nic user,ipv6=off: uses the \u0026ldquo;user\u0026rdquo; network interface, disables ipv6\nEnable the network adapter  ifconfig eth0 up udhcpc Test network connection  nslookup google.com Note: ICMP ping doesn\u0026rsquo;t work in QEMU\n"
     }
 ,
     {
         "ref": "https://semeniuc.ml/blog/canon-printer-arch/",
         "title": "Canon MF4770n Network Printer Setup on Arch Linux",
         "section": "blog",
+        "tags": null,
         "date" : "2019.09.08",
-        "body": "Install pacaur or substitute for your favourite AUR helper\npacaur -S cndrvcups-lb-bin sudo system-config-printer   Click \u0026ldquo;Add\u0026rdquo; button Under the \u0026ldquo;Devices\u0026rdquo; sidebar, expand the \u0026ldquo;Network Printer\u0026rdquo; item Wait several seconds and \u0026ldquo;Canon MF4700 (192.168.XXX.XXX)\u0026rdquo; will appear. Click it Keep the default host, port number, and conection Kee the default printer name and location Print a test page :)  "
+        "body": "Install pacaur or substitute for your favourite AUR helper\npacaur -S cndrvcups-lb-bin sudo system-config-printer  Click \u0026ldquo;Add\u0026rdquo; button Under the \u0026ldquo;Devices\u0026rdquo; sidebar, expand the \u0026ldquo;Network Printer\u0026rdquo; item Wait several seconds and \u0026ldquo;Canon MF4700 (192.168.XXX.XXX)\u0026rdquo; will appear. Click it Keep the default host, port number, and conection Kee the default printer name and location Print a test page :)  "
     }
 ,
     {
         "ref": "https://semeniuc.ml/blog/my-first-post/",
         "title": "New static site with hugo :)",
         "section": "blog",
+        "tags": null,
         "date" : "2019.09.05",
         "body": "Switched from wordpress, making waves here!\n"
-    }
-,
-    {
-        "ref": "https://semeniuc.ml/blog/closures/",
-        "title": "",
-        "section": "blog",
-        "date" : "0001.01.01",
-        "body": "let a = function(f) { return function(x) { console.log(\u0026lsquo;hi\u0026rsquo;); return f(x)(f); }(f); } a(a);\n/* let a = function(f) { return function(x) { console.log(\u0026lsquo;hi\u0026rsquo;); return f(x)(f); }; } a(a)(a); */\n"
     }
 ]
