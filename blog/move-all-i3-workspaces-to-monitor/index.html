@@ -17,7 +17,11 @@
   
   
   
-  <link rel="stylesheet" href="https://semeniuc.ml/style.min.a50e85be2191b7446e684667eb002377b10f833f329c30d9b701ea188a664750.css">
+  <link rel="stylesheet" href="https://semeniuc.ml/style.min.6f642c5866835106e8a19b94463576436c99be9e41a8714ab3df3daa95f6bf90.css" integrity="sha256-b2QsWGaDUQbooZuURjV2Q2yZvp5BqHFKs989qpX2v5A=">
+  
+  
+  
+  <link rel="stylesheet" href="https://semeniuc.ml/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css" media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB&#43;BLd7VPoFFdCmg9OezbJR26lg/h&#43;Wb3/zb8I=">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   
@@ -54,7 +58,18 @@ for i in {9..1}; do i3-msg &#34;workspace ${i}, move workspace to output HDMI1&#
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
   <![endif]-->
 
-  </head>
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-161926610-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</head>
 
   <body>
     
@@ -63,7 +78,7 @@ for i in {9..1}; do i3-msg &#34;workspace ${i}, move workspace to output HDMI1&#
   
   <div class="avatar">
     <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg">
-    <a href="https://semeniuc.ml/"><img src="https://semeniuc.ml//img/avatar-border.svg"></a>
+    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg"></a>
   </div>
   
   <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
@@ -71,22 +86,20 @@ for i in {9..1}; do i3-msg &#34;workspace ${i}, move workspace to output HDMI1&#
 
   
   
+  
   <p class="date">October 29, 2019</p>
   
-  <div id="tags">
-    <ul>
-      
-    </ul>
-  </div>
+  
+  
   
   <div id="contentBody">
     <p>This moves everything to HDMI1</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>9..1<span style="color:#f92672">}</span>; <span style="color:#66d9ef">do</span> i3-msg <span style="color:#e6db74">&#34;workspace </span><span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">, move workspace to output HDMI1&#34;</span>; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> i in <span style="color:#f92672">{</span>9..1<span style="color:#f92672">}</span>; <span style="color:#66d9ef">do</span> i3-msg <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">workspace </span><span style="color:#e6db74">${</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74">, move workspace to output HDMI1</span><span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span>
 </code></pre></div>
   </div>
   <footer>
   <p>
-  &copy; 2019 Eric Semeniuc.
+  &copy; 2020 Eric Semeniuc.
   Powered by <a href="https://gohugo.io/">Hugo</a>
   using the <a href="https://github.com/koirand/pulp/">pulp</a> theme.
   </p>

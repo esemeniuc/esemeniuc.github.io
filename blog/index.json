@@ -61,4 +61,13 @@
         "date" : "2019.09.05",
         "body": "Switched from wordpress, making waves here!\n"
     }
+,
+    {
+        "ref": "https://semeniuc.ml/blog/closures/",
+        "title": "",
+        "section": "blog",
+        "tags": null,
+        "date" : "0001.01.01",
+        "body": "let a = function(f) { return function(x) { console.log(\u0026lsquo;hi\u0026rsquo;); return f(x)(f); }(f); } a(a);\n/* let a = function(f) { return function(x) { console.log(\u0026lsquo;hi\u0026rsquo;); return f(x)(f); }; } a(a)(a); */\n"
+    }
 ]

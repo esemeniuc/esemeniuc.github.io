@@ -17,7 +17,11 @@
   
   
   
-  <link rel="stylesheet" href="https://semeniuc.ml/style.min.a50e85be2191b7446e684667eb002377b10f833f329c30d9b701ea188a664750.css">
+  <link rel="stylesheet" href="https://semeniuc.ml/style.min.6f642c5866835106e8a19b94463576436c99be9e41a8714ab3df3daa95f6bf90.css" integrity="sha256-b2QsWGaDUQbooZuURjV2Q2yZvp5BqHFKs989qpX2v5A=">
+  
+  
+  
+  <link rel="stylesheet" href="https://semeniuc.ml/style-dark.min.0a647fb6c07e04b77b54fa0515d0a683d39ecdb251dba960fe1f966f7ff36fc2.css" media="(prefers-color-scheme: dark)" integrity="sha256-CmR/tsB&#43;BLd7VPoFFdCmg9OezbJR26lg/h&#43;Wb3/zb8I=">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
   
@@ -60,7 +64,18 @@ package main import &#34;fmt&#34; func main() { fmt.Println(&#34;hi&#34;) } Addi
   <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
   <![endif]-->
 
-  </head>
+  
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-161926610-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+</head>
 
   <body>
     
@@ -69,7 +84,7 @@ package main import &#34;fmt&#34; func main() { fmt.Println(&#34;hi&#34;) } Addi
   
   <div class="avatar">
     <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg">
-    <a href="https://semeniuc.ml/"><img src="https://semeniuc.ml//img/avatar-border.svg"></a>
+    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg"></a>
   </div>
   
   <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
@@ -77,13 +92,11 @@ package main import &#34;fmt&#34; func main() { fmt.Println(&#34;hi&#34;) } Addi
 
   
   
+  
   <p class="date">March 16, 2020</p>
   
-  <div id="tags">
-    <ul>
-      
-    </ul>
-  </div>
+  
+  
   
   <div id="contentBody">
     <p>Let&rsquo;s do a simple example: you want to create a package <code>foo</code> which has your business logic, and want to have a small <code>main</code> driver (ie. make it executable, and not a library only).</p>
@@ -170,7 +183,7 @@ go: found foo in foo v0.0.0-00010101000000-000000000000
   
 <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">foo</span> =&gt; .<span style="color:#f92672">/</span><span style="color:#a6e22e">foo</span>  
   
-<span style="color:#a6e22e">require</span> <span style="color:#a6e22e">foo</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">00010101000000</span><span style="color:#f92672">-</span><span style="color:#ae81ff">000000000000</span>
+<span style="color:#a6e22e">require</span> <span style="color:#a6e22e">foo</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0</span><span style="color:#ae81ff">.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">00010101000000</span><span style="color:#f92672">-</span><span style="color:#ae81ff">000000000000</span>
 </code></pre></div><p>The <code>require foo v0.0.0-00010101000000-000000000000</code> line tells the Go compiler which version of a dependency we are using. In this case, it&rsquo;s unversioned since it&rsquo;s local. If we used a library from GitHub, eg. <code>graphql-go</code>, we would have a line like <code>github.com/graph-gophers/graphql-go v0.0.0-20200309224638-dae41bde9ef9</code>.</p>
 <h2 id="finished-project">Finished Project</h2>
 <p>See <a href="https://github.com/esemeniuc/goModuleDemo">https://github.com/esemeniuc/goModuleDemo</a> for the complete project</p>
@@ -178,7 +191,7 @@ go: found foo in foo v0.0.0-00010101000000-000000000000
   </div>
   <footer>
   <p>
-  &copy; 2019 Eric Semeniuc.
+  &copy; 2020 Eric Semeniuc.
   Powered by <a href="https://gohugo.io/">Hugo</a>
   using the <a href="https://github.com/koirand/pulp/">pulp</a> theme.
   </p>
