@@ -1,5 +1,14 @@
 [
     {
+        "ref": "https://semeniuc.ml/blog/using-render-props-to-pass-in-components-with-typescript-react/",
+        "title": "Using Render Props to Pass in Components With Typescript \u0026 React",
+        "section": "blog",
+        "tags": null,
+        "date" : "2020.03.27",
+        "body": "In React and Typescript it\u0026rsquo;s sometimes tricky to pass in a component as a prop. We do that using React.FunctionComponent or React.FC as a shorthand.\nReact.FC React.FC uses a type parameter for props, eg. use React.FC or React.FC\u0026lt;\u0026gt; when no parameters are needed, and React.FC\u0026lt;{ paramName1: string, paramName2: int}\u0026gt; for a functional component which takes in 2 parameters of type string and int respectively.\nCodeSandbox Example  Sandbox link: https://codesandbox.io/s/strange-snowflake-7x93r\nOther notes Environment:\n Typescript 3.8.3 React 16.13.1 Create React App 3.4.1  "
+    }
+,
+    {
         "ref": "https://semeniuc.ml/blog/how-to-use-go-1.14-modules-with-local-packages/",
         "title": "How To Use Go 1.14 Modules With Local Packages",
         "section": "blog",
