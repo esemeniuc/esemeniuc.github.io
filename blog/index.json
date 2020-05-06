@@ -1,5 +1,14 @@
 [
     {
+        "ref": "https://semeniuc.ml/blog/using-foreign-keys-with-sqlite-and-diesel-r2d2/",
+        "title": "Using Foreign Keys With Sqlite and Diesel + R2D2",
+        "section": "blog",
+        "tags": null,
+        "date" : "2020.05.06",
+        "body": "Using Foreign Keys With Sqlite and Diesel + R2D2 SQLite requires each connection to enable foreign key support (due to backward compatiblity). We want to enable foreign key support in a single location only. We can do that using connection_customizer(). Let\u0026rsquo;s look at the code below.\nEnvironment  Rust 1.42 Linux  Cargo.toml [package] name = \u0026#34;demo\u0026#34; version = \u0026#34;1.0.0\u0026#34; authors = [\u0026#34;Eric Semeniuc \u0026lt;3838856+esemeniuc@users.noreply.github.com\u0026gt;\u0026#34;] edition = \u0026#34;2018\u0026#34; [dependencies] diesel = { version = \u0026#34;1.4.4\u0026#34;, features = [\u0026#34;sqlite\u0026#34;, \u0026#34;r2d2\u0026#34;, \u0026#34;chrono\u0026#34;] } Code use diesel::prelude::*; use diesel::r2d2::{Pool, ConnectionManager}; use diesel::connection::SimpleConnection; pub fn establish_connection_temp_db() -\u0026gt; Pool\u0026lt;ConnectionManager\u0026lt;SqliteConnection\u0026gt;\u0026gt; { let manager = ConnectionManager::\u0026lt;SqliteConnection\u0026gt;::new(\u0026#34;:memory:\u0026#34;); #[derive(Debug)] struct SqliteForeignKey {} impl diesel::r2d2::CustomizeConnection::\u0026lt;SqliteConnection, diesel::r2d2::Error\u0026gt; for SqliteForeignKey { fn on_acquire(\u0026amp;self, conn: \u0026amp;mut SqliteConnection) -\u0026gt; Result\u0026lt;(), diesel::r2d2::Error\u0026gt; { conn.batch_execute(\u0026#34;PRAGMA foreign_keys = ON\u0026#34;).map_err(diesel::r2d2::Error::QueryError) } } Pool::builder().connection_customizer(Box::new(SqliteForeignKey {})).build(manager).expect(\u0026#34;Failed to create pool.\u0026#34;) } Documentation https://docs.diesel.rs/diesel/r2d2/struct.Builder.html#method.connection_customizer\n"
+    }
+,
+    {
         "ref": "https://semeniuc.ml/blog/using-render-props-to-pass-in-components-with-typescript-react/",
         "title": "Using Render Props to Pass in Components With Typescript \u0026 React",
         "section": "blog",
@@ -69,14 +78,5 @@
         "tags": null,
         "date" : "2019.09.05",
         "body": "Switched from wordpress, making waves here!\n"
-    }
-,
-    {
-        "ref": "https://semeniuc.ml/blog/closures/",
-        "title": "",
-        "section": "blog",
-        "tags": null,
-        "date" : "0001.01.01",
-        "body": "let a = function(f) { return function(x) { console.log(\u0026lsquo;hi\u0026rsquo;); return f(x)(f); }(f); } a(a);\n/* let a = function(f) { return function(x) { console.log(\u0026lsquo;hi\u0026rsquo;); return f(x)(f); }; } a(a)(a); */\n"
     }
 ]

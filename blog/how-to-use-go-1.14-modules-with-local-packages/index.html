@@ -84,7 +84,7 @@ if (!doNotTrack) {
   
   <div class="avatar">
     <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg" alt="Eric Semeniuc">
-    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg"></a>
+    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg" alt=""></a>
   </div>
   
   <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
@@ -183,7 +183,7 @@ go: found foo in foo v0.0.0-00010101000000-000000000000
   
 <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">foo</span> =&gt; .<span style="color:#f92672">/</span><span style="color:#a6e22e">foo</span>  
   
-<span style="color:#a6e22e">require</span> <span style="color:#a6e22e">foo</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0</span><span style="color:#ae81ff">.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">00010101000000</span><span style="color:#f92672">-</span><span style="color:#ae81ff">000000000000</span>
+<span style="color:#a6e22e">require</span> <span style="color:#a6e22e">foo</span> <span style="color:#a6e22e">v0</span><span style="color:#ae81ff">.0.0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">00010101000000</span><span style="color:#f92672">-</span><span style="color:#ae81ff">000000000000</span>
 </code></pre></div><p>The <code>require foo v0.0.0-00010101000000-000000000000</code> line tells the Go compiler which version of a dependency we are using. In this case, it&rsquo;s unversioned since it&rsquo;s local. If we used a library from GitHub, eg. <code>graphql-go</code>, we would have a line like <code>github.com/graph-gophers/graphql-go v0.0.0-20200309224638-dae41bde9ef9</code>.</p>
 <h2 id="finished-project">Finished Project</h2>
 <p>See <a href="https://github.com/esemeniuc/goModuleDemo">https://github.com/esemeniuc/goModuleDemo</a> for the complete project</p>
