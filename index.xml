@@ -6,10 +6,28 @@
     <description>Recent content on Eric Semeniuc | Dev, Thinker, Doer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 06 May 2020 13:09:14 -0700</lastBuildDate>
+    <lastBuildDate>Sat, 27 Feb 2021 10:07:08 -0700</lastBuildDate><atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fix Firefox Checkerbox Effect on Youtube</title>
+      <link>https://semeniuc.ml/blog/firefox-fix-checkbox-effect-on-youtube/</link>
+      <pubDate>Sat, 27 Feb 2021 10:07:08 -0700</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/firefox-fix-checkbox-effect-on-youtube/</guid>
+      <description>In Firefox on Linux, in fast moving scenes, you can see a checkerbox effect.
+To fix this,
+ Open about:config Change layers.acceleration.force-enabled to true Restart Firefox  That&amp;rsquo;s it!
+Try this on a scene that has movement and high contrast, for example: https://youtu.be/0J6XKhn8LgY?t=27</description>
+    </item>
     
-	<atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>Mac OS X Disable Mouse Acceleration</title>
+      <link>https://semeniuc.ml/blog/mac-os-x-disable-mouse-acceleration/</link>
+      <pubDate>Fri, 09 Oct 2020 10:49:07 -0800</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/mac-os-x-disable-mouse-acceleration/</guid>
+      <description>In your terminal, enter the following:
+defaults write .GlobalPreferences com.apple.mouse.scaling -1 defaults write .GlobalPreferences com.apple.trackpad.scaling -1 defaults write .GlobalPreferences com.apple.scrollwheel.scaling -1 </description>
+    </item>
     
     <item>
       <title>Using Foreign Keys With Sqlite and Diesel &#43; R2D2</title>

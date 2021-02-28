@@ -43,7 +43,8 @@ Environment  Rust 1.42 Linux  Cargo.toml [package] name = &#34;demo&#34; version
 
 
 
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content="https://semeniuc.ml//img/avatar.jpg"/>
 <meta name="twitter:title" content="Using Foreign Keys With Sqlite and Diesel &#43; R2D2"/>
 <meta name="twitter:description" content="Using Foreign Keys With Sqlite and Diesel &#43; R2D2 SQLite requires each connection to enable foreign key support (due to backward compatiblity). We want to enable foreign key support in a single location only. We can do that using connection_customizer(). Let&rsquo;s look at the code below.
@@ -69,6 +70,8 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
 </head>
 
   <body>
@@ -110,7 +113,7 @@ We want to enable foreign key support in a single location only. We can do that 
 
 
 [<span style="color:#a6e22e">dependencies</span>]
-<span style="color:#a6e22e">diesel</span> = <span style="color:#960050;background-color:#1e0010">{</span> <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;1.4.4&#34;</span>, <span style="color:#a6e22e">features</span> = [<span style="color:#e6db74">&#34;sqlite&#34;</span>, <span style="color:#e6db74">&#34;r2d2&#34;</span>, <span style="color:#e6db74">&#34;chrono&#34;</span>] <span style="color:#960050;background-color:#1e0010">}</span>
+<span style="color:#a6e22e">diesel</span> = { <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;1.4.4&#34;</span>, <span style="color:#a6e22e">features</span> = [<span style="color:#e6db74">&#34;sqlite&#34;</span>, <span style="color:#e6db74">&#34;r2d2&#34;</span>, <span style="color:#e6db74">&#34;chrono&#34;</span>] }
 </code></pre></div><h2 id="code">Code</h2>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> diesel::prelude::<span style="color:#f92672">*</span>;
 <span style="color:#66d9ef">use</span> diesel::r2d2::{Pool, ConnectionManager};
@@ -134,7 +137,7 @@ We want to enable foreign key support in a single location only. We can do that 
   </div>
   <footer>
   <p>
-  &copy; 2020 Eric Semeniuc.
+  &copy; 2021 Eric Semeniuc.
   Powered by <a href="https://gohugo.io/">Hugo</a>
   using the <a href="https://github.com/koirand/pulp/">pulp</a> theme.
   </p>

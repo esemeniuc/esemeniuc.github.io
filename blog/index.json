@@ -1,5 +1,23 @@
 [
     {
+        "ref": "https://semeniuc.ml/blog/firefox-fix-checkbox-effect-on-youtube/",
+        "title": "Fix Firefox Checkerbox Effect on Youtube",
+        "section": "blog",
+        "tags": null,
+        "date" : "2021.02.27",
+        "body": "In Firefox on Linux, in fast moving scenes, you can see a checkerbox effect.\nTo fix this,\n Open about:config Change layers.acceleration.force-enabled to true Restart Firefox  That\u0026rsquo;s it!\nTry this on a scene that has movement and high contrast, for example: https://youtu.be/0J6XKhn8LgY?t=27\n"
+    }
+,
+    {
+        "ref": "https://semeniuc.ml/blog/mac-os-x-disable-mouse-acceleration/",
+        "title": "Mac OS X Disable Mouse Acceleration",
+        "section": "blog",
+        "tags": null,
+        "date" : "2020.10.09",
+        "body": "In your terminal, enter the following:\ndefaults write .GlobalPreferences com.apple.mouse.scaling -1 defaults write .GlobalPreferences com.apple.trackpad.scaling -1 defaults write .GlobalPreferences com.apple.scrollwheel.scaling -1 "
+    }
+,
+    {
         "ref": "https://semeniuc.ml/blog/using-foreign-keys-with-sqlite-and-diesel-r2d2/",
         "title": "Using Foreign Keys With Sqlite and Diesel + R2D2",
         "section": "blog",
