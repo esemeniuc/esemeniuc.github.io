@@ -6,7 +6,18 @@
     <description>Recent content on Eric Semeniuc | Dev, Thinker, Doer</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Feb 2021 10:07:08 -0700</lastBuildDate><atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Apr 2021 20:55:29 -0700</lastBuildDate><atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Connect to Your Damn Kubernetes Pod</title>
+      <link>https://semeniuc.ml/blog/how-to-connect-to-your-damn-kubernetes-pod/</link>
+      <pubDate>Mon, 19 Apr 2021 20:55:29 -0700</pubDate>
+      
+      <guid>https://semeniuc.ml/blog/how-to-connect-to-your-damn-kubernetes-pod/</guid>
+      <description>How To Connect To Your Damn Kubernetes Pod So you have nginx in pod running on port 80, and you just want to curl the damn thing. How do you do it??
+Let&amp;rsquo;s start with a yaml file
+apiVersion: apps/v1  kind: Deployment  metadata: name: my-nginx  spec: selector: matchLabels: run: my-nginx  replicas: 2 template: metadata: labels: run: my-nginx  spec: containers: - name: my-nginx  image: nginx  ports: - containerPort: 80 --- apiVersion: v1  kind: Service  metadata: name: my-nginx  labels: run: my-nginx  spec: ports: - port: 80 protocol: TCP  selector: run: my-nginx nginx.</description>
+    </item>
+    
     <item>
       <title>Fix Firefox Checkerbox Effect on Youtube</title>
       <link>https://semeniuc.ml/blog/firefox-fix-checkbox-effect-on-youtube/</link>
