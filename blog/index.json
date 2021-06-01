@@ -1,5 +1,14 @@
 [
     {
+        "ref": "https://semeniuc.ml/blog/sending-large-files-with-rsync-without-ssh/",
+        "title": "Sending Large Files Using `rsync` Without SSH",
+        "section": "blog",
+        "tags": null,
+        "date" : "2021.05.27",
+        "body": "Rsync is super powerful! It allows you to:\n Send large files quickly over the same network Fix corrupt files without re-sending everything again No need for passwords or ssh access  Prerequisites  Both sides have rsync installed You can ping the sending machine  Setup Sender # make a config file to set up rsync cat \u0026gt; rsyncd.conf \u0026lt;\u0026lt;EOF [homedir] path = /home/%RSYNC_USER_NAME% comment = \u0026#34;my home folder\u0026#34; read only = true list = yes EOF # start rsync server rsync --daemon --config rsyncd.conf --port 8000 Check that directory is shared with:\nrsync rsync://localhost:1837 Output:\nme@a:~$ rsync rsync://localhost:1837 homedir \u0026quot;my home folder\u0026quot; Receiver rsync --progress --compress --inplace --checksum rsync://MY_HOST:1837/homedir/file.foo . Flags: --progress: show to progress of the copy\n--compress: use file compression to speed up copying on slow links\n--inplace: replace large files in-place (avoids running out of disk space if you have very large files)\n--checksum: copies over the blocks that are corrupt/changed, allowing large bandwidth savings at the cost of CPU and I/O for calculating checksums\nConclusion That\u0026rsquo;s it, you can send big files really fast :D\n"
+    }
+,
+    {
         "ref": "https://semeniuc.ml/blog/how-to-connect-to-your-damn-kubernetes-pod/",
         "title": "How to Connect to Your Damn Kubernetes Pod",
         "section": "blog",
@@ -105,5 +114,14 @@
         "tags": null,
         "date" : "2019.09.05",
         "body": "Switched from wordpress, making waves here!\n"
+    }
+,
+    {
+        "ref": "https://semeniuc.ml/blog/closures/",
+        "title": "",
+        "section": "blog",
+        "tags": null,
+        "date" : "0001.01.01",
+        "body": ""
     }
 ]
