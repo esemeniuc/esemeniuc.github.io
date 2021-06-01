@@ -8,7 +8,7 @@
     <loc>https://semeniuc.ml/</loc>
     <lastmod>2021-05-27T10:07:08-07:00</lastmod>
   </url><url>
-    <loc>https://semeniuc.ml/blog/sending-large-files-with-rsync-without-ssh/</loc>
+    <loc>https://semeniuc.ml/blog/sending-large-files-reliably-using-rsync-without-ssh/</loc>
     <lastmod>2021-05-27T10:07:08-07:00</lastmod>
   </url><url>
     <loc>https://semeniuc.ml/blog/how-to-connect-to-your-damn-kubernetes-pod/</loc>

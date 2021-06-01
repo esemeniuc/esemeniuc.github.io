@@ -3,7 +3,7 @@
   <head>
   <title>
       
-          Sending Large Files Using `rsync` Without SSH - Eric Semeniuc | Dev, Thinker, Doer
+          Sending Large Files Reliably Using `rsync` Without SSH - Eric Semeniuc | Dev, Thinker, Doer
       
   </title>
   <meta charset="utf-8">
@@ -27,22 +27,22 @@
   
   
 
-  <meta property="og:title" content="Sending Large Files Using `rsync` Without SSH" />
+  <meta property="og:title" content="Sending Large Files Reliably Using `rsync` Without SSH" />
 <meta property="og:description" content="Rsync is super powerful! It allows you to:
  Send large files quickly over the same network Fix corrupt files without re-sending everything again No need for passwords or ssh access  Prerequisites  Both sides have rsync installed You can ping the sending machine  Setup Sender # make a config file to set up rsync cat &gt; rsyncd.conf &lt;&lt;EOF [homedir] path = /home/%RSYNC_USER_NAME% comment = &#34;my home folder&#34; read only = true list = yes EOF # start rsync server rsync --daemon --config rsyncd." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://semeniuc.ml/blog/sending-large-files-with-rsync-without-ssh/" /><meta property="article:section" content="blog" />
+<meta property="og:url" content="https://semeniuc.ml/blog/sending-large-files-reliably-using-rsync-without-ssh/" /><meta property="article:section" content="blog" />
 <meta property="article:published_time" content="2021-05-27T10:07:08-07:00" />
 <meta property="article:modified_time" content="2021-05-27T10:07:08-07:00" />
 
-<meta itemprop="name" content="Sending Large Files Using `rsync` Without SSH">
+<meta itemprop="name" content="Sending Large Files Reliably Using `rsync` Without SSH">
 <meta itemprop="description" content="Rsync is super powerful! It allows you to:
  Send large files quickly over the same network Fix corrupt files without re-sending everything again No need for passwords or ssh access  Prerequisites  Both sides have rsync installed You can ping the sending machine  Setup Sender # make a config file to set up rsync cat &gt; rsyncd.conf &lt;&lt;EOF [homedir] path = /home/%RSYNC_USER_NAME% comment = &#34;my home folder&#34; read only = true list = yes EOF # start rsync server rsync --daemon --config rsyncd."><meta itemprop="datePublished" content="2021-05-27T10:07:08-07:00" />
 <meta itemprop="dateModified" content="2021-05-27T10:07:08-07:00" />
 <meta itemprop="wordCount" content="177">
 <meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:image" content="https://semeniuc.ml//img/avatar.jpg"/>
-<meta name="twitter:title" content="Sending Large Files Using `rsync` Without SSH"/>
+<meta name="twitter:title" content="Sending Large Files Reliably Using `rsync` Without SSH"/>
 <meta name="twitter:description" content="Rsync is super powerful! It allows you to:
  Send large files quickly over the same network Fix corrupt files without re-sending everything again No need for passwords or ssh access  Prerequisites  Both sides have rsync installed You can ping the sending machine  Setup Sender # make a config file to set up rsync cat &gt; rsyncd.conf &lt;&lt;EOF [homedir] path = /home/%RSYNC_USER_NAME% comment = &#34;my home folder&#34; read only = true list = yes EOF # start rsync server rsync --daemon --config rsyncd."/>
 
@@ -70,7 +70,7 @@ if (!doNotTrack) {
 
   <body>
     
-  <h1>Sending Large Files Using `rsync` Without SSH</h1>
+  <h1>Sending Large Files Reliably Using `rsync` Without SSH</h1>
   <header>
   
   <div class="avatar">

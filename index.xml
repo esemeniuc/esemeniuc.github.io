@@ -8,11 +8,11 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 27 May 2021 10:07:08 -0700</lastBuildDate><atom:link href="https://semeniuc.ml/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Sending Large Files Using `rsync` Without SSH</title>
-      <link>https://semeniuc.ml/blog/sending-large-files-with-rsync-without-ssh/</link>
+      <title>Sending Large Files Reliably Using `rsync` Without SSH</title>
+      <link>https://semeniuc.ml/blog/sending-large-files-reliably-using-rsync-without-ssh/</link>
       <pubDate>Thu, 27 May 2021 10:07:08 -0700</pubDate>
       
-      <guid>https://semeniuc.ml/blog/sending-large-files-with-rsync-without-ssh/</guid>
+      <guid>https://semeniuc.ml/blog/sending-large-files-reliably-using-rsync-without-ssh/</guid>
       <description>Rsync is super powerful! It allows you to:
  Send large files quickly over the same network Fix corrupt files without re-sending everything again No need for passwords or ssh access  Prerequisites  Both sides have rsync installed You can ping the sending machine  Setup Sender # make a config file to set up rsync cat &amp;gt; rsyncd.conf &amp;lt;&amp;lt;EOF [homedir] path = /home/%RSYNC_USER_NAME% comment = &amp;#34;my home folder&amp;#34; read only = true list = yes EOF # start rsync server rsync --daemon --config rsyncd.</description>
     </item>

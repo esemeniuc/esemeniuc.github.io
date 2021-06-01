@@ -1,7 +1,7 @@
 [
     {
-        "ref": "https://semeniuc.ml/blog/sending-large-files-with-rsync-without-ssh/",
-        "title": "Sending Large Files Using `rsync` Without SSH",
+        "ref": "https://semeniuc.ml/blog/sending-large-files-reliably-using-rsync-without-ssh/",
+        "title": "Sending Large Files Reliably Using `rsync` Without SSH",
         "section": "blog",
         "tags": null,
         "date" : "2021.05.27",
