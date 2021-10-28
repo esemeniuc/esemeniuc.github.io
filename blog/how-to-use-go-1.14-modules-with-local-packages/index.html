@@ -72,6 +72,8 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
 </head>
 
   <body>
@@ -81,7 +83,7 @@ if (!doNotTrack) {
   
   <div class="avatar">
     <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg" alt="Eric Semeniuc">
-    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg"></a>
+    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg" alt=""></a>
   </div>
   
   <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
@@ -99,11 +101,11 @@ if (!doNotTrack) {
     <p>Let&rsquo;s do a simple example: you want to create a package <code>foo</code> which has your business logic, and want to have a small <code>main</code> driver (ie. make it executable, and not a library only).</p>
 <h2 id="starting-out">Starting out</h2>
 <p>Here&rsquo;s our starting folder structure:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
 ├── README.md
 └── main.go
 </code></pre></div><p>Contents of <code>main.go</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> <span style="color:#e6db74">&#34;fmt&#34;</span>
 
@@ -113,35 +115,35 @@ if (!doNotTrack) {
 </code></pre></div><h2 id="adding-a-package">Adding a package</h2>
 <p>We want to make a package <code>foo</code> that has logic, so we make a directory for <code>foo</code>, and <code>foo/foo.go</code> file with a <code>doWork()</code> function.</p>
 <p>New folder structure:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
 ├── README.md
 ├── foo
 │   └── foo.go
 └── main.go
 </code></pre></div><p>Here&rsquo;s the contents of <code>foo/foo.go</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">foo</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">foo</span>
 
 <span style="color:#66d9ef">func</span> <span style="color:#a6e22e">DoWork</span>() <span style="color:#66d9ef">int</span> {
 	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">42</span>
 }
 </code></pre></div><p>Lets initialize the module:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜  cd foo <span style="color:#f92672">&amp;&amp;</span> go mod init foo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜  cd foo <span style="color:#f92672">&amp;&amp;</span> go mod init foo
 go: creating new go.mod: module foo
 </code></pre></div><p>Here&rsquo;s the layout now:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
 ├── README.md
 ├── foo
 │   ├── foo.go
 │   └── go.mod
 └── main.go
 </code></pre></div><p>Notice that <code>foo/go.mod</code> has been created with the contents:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">foo</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">foo</span>
 
 <span style="color:#66d9ef">go</span> <span style="color:#ae81ff">1.14</span>
 </code></pre></div><p>We can run <code>go mod tidy</code> from the <code>foo</code> directory to <strong>automatically find all dependencies used in <code>foo</code> and download them</strong>.</p>
 <h2 id="using-our-new-package">Using our new package</h2>
 <p>Now lets make use of <code>foo</code> in our <code>main.go</code> file.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">package</span> <span style="color:#a6e22e">main</span>
 
 <span style="color:#f92672">import</span> (
 	<span style="color:#e6db74">&#34;fmt&#34;</span>
@@ -152,10 +154,10 @@ go: creating new go.mod: module foo
 	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">DoWork</span>())
 }
 </code></pre></div><p>We also need to tell Go that we want to use a local package, so we need to make a new <code>mod.go</code> file from the project root.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜  cd .. <span style="color:#f92672">&amp;&amp;</span> go mod init main
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜  cd .. <span style="color:#f92672">&amp;&amp;</span> go mod init main
 go: creating new go.mod: module main
 </code></pre></div><p>Here&rsquo;s our folder structure now:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.
 ├── README.md
 ├── foo
 │   ├── foo.go
@@ -164,17 +166,17 @@ go: creating new go.mod: module main
 └── main.go
 </code></pre></div><p>We need to tell the compiler that we want to use our local library, so we append <code>replace foo =&gt; ./foo</code> to <code>go.mod</code>.  Check the <a href="https://github.com/golang/go/wiki/Modules#when-should-i-use-the-replace-directive">Go Wiki</a> for more info about modules.</p>
 <p>This is <code>go.mod</code> after the modification:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">main</span>  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">main</span>  
   
 <span style="color:#66d9ef">go</span> <span style="color:#ae81ff">1.14</span>  
   
 <span style="color:#a6e22e">replace</span> <span style="color:#a6e22e">foo</span> =&gt; .<span style="color:#f92672">/</span><span style="color:#a6e22e">foo</span>
 </code></pre></div><p>Let&rsquo;s run it</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜  go run main
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">➜  go run main
 go: found foo in foo v0.0.0-00010101000000-000000000000
 <span style="color:#ae81ff">42</span>
 </code></pre></div><p><strong>It works!</strong> Also notice that our main <code>go.mod</code> file was automatically updated to add <code>foo</code> to the list of modules:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">main</span>  
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#a6e22e">module</span> <span style="color:#a6e22e">main</span>  
   
 <span style="color:#66d9ef">go</span> <span style="color:#ae81ff">1.14</span>  
   

@@ -66,6 +66,8 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
 </head>
 
   <body>
@@ -75,7 +77,7 @@ if (!doNotTrack) {
   
   <div class="avatar">
     <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg" alt="Eric Semeniuc">
-    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg"></a>
+    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg" alt=""></a>
   </div>
   
   <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
@@ -99,7 +101,7 @@ We want to enable foreign key support in a single location only. We can do that 
 <li>Linux</li>
 </ul>
 <h2 id="cargotoml">Cargo.toml</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">package</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">package</span>]
 <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;demo&#34;</span>
 <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;1.0.0&#34;</span>
 <span style="color:#a6e22e">authors</span> = [<span style="color:#e6db74">&#34;Eric Semeniuc &lt;3838856+esemeniuc@users.noreply.github.com&gt;&#34;</span>]
@@ -109,7 +111,7 @@ We want to enable foreign key support in a single location only. We can do that 
 [<span style="color:#a6e22e">dependencies</span>]
 <span style="color:#a6e22e">diesel</span> = { <span style="color:#a6e22e">version</span> = <span style="color:#e6db74">&#34;1.4.4&#34;</span>, <span style="color:#a6e22e">features</span> = [<span style="color:#e6db74">&#34;sqlite&#34;</span>, <span style="color:#e6db74">&#34;r2d2&#34;</span>, <span style="color:#e6db74">&#34;chrono&#34;</span>] }
 </code></pre></div><h2 id="code">Code</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> diesel::prelude::<span style="color:#f92672">*</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#66d9ef">use</span> diesel::prelude::<span style="color:#f92672">*</span>;
 <span style="color:#66d9ef">use</span> diesel::r2d2::{Pool, ConnectionManager};
 <span style="color:#66d9ef">use</span> diesel::connection::SimpleConnection;
 <span style="color:#66d9ef">pub</span> <span style="color:#66d9ef">fn</span> <span style="color:#a6e22e">establish_connection_temp_db</span>() -&gt; <span style="color:#a6e22e">Pool</span><span style="color:#f92672">&lt;</span>ConnectionManager<span style="color:#f92672">&lt;</span>SqliteConnection<span style="color:#f92672">&gt;&gt;</span> {

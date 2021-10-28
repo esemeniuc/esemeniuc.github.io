@@ -69,6 +69,8 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
 </head>
 
   <body>
@@ -78,7 +80,7 @@ if (!doNotTrack) {
   
   <div class="avatar">
     <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg" alt="Eric Semeniuc">
-    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg"></a>
+    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg" alt=""></a>
   </div>
   
   <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
@@ -96,7 +98,7 @@ if (!doNotTrack) {
     <h1 id="how-to-connect-to-your-damn-kubernetes-pod">How To Connect To Your Damn Kubernetes Pod</h1>
 <p>So you have <code>nginx</code> in pod running on port 80, and you just want to <code>curl</code> the damn thing. How do you do it??</p>
 <p>Let&rsquo;s start with a yaml file</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1   </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1   </span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment  </span>
 <span style="color:#f92672">metadata</span>:  
   <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-nginx  </span>
@@ -142,25 +144,25 @@ or
 <p>Run <code>kubectl proxy</code> in the background and use Pod or Service method below.</p>
 <p>Note: this works for <strong>HTTP(S)</strong> services only, and <strong>beware the trailing slash</strong>!</p>
 <h3 id="via-a-service">Via a Service</h3>
-<pre><code>➜  ~ kubectl get services
+<pre tabindex="0"><code>➜  ~ kubectl get services
 NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1      &lt;none&gt;        443/TCP   3h9m
 my-nginx     ClusterIP   10.109.50.51   &lt;none&gt;        80/TCP    3h9m
 </code></pre><p><code>curl http://localhost:8001/api/v1/namespaces/default/services/my-nginx/proxy/</code></p>
 <p>Ref: <a href="https://kubectl.docs.kubernetes.io/references/kubectl/proxy/#connecting-to-an-internal-service">https://kubectl.docs.kubernetes.io/references/kubectl/proxy/#connecting-to-an-internal-service</a></p>
 <h3 id="via-a-pod">Via a Pod</h3>
-<pre><code>➜  ~ kubectl get pods
+<pre tabindex="0"><code>➜  ~ kubectl get pods
 NAME                        READY   STATUS    RESTARTS   AGE
 my-nginx-5b56ccd65f-dtgcg   1/1     Running   0          3h10m
 my-nginx-5b56ccd65f-rr5nc   1/1     Running   0          3h10m
 </code></pre><p><code>curl http://localhost:8001/api/v1/namespaces/default/pods/$POD_NAME/proxy/</code></p>
 <p>Ref: <a href="https://stackoverflow.com/a/55192825/3408577">https://stackoverflow.com/a/55192825/3408577</a></p>
 <h2 id="option-3---minikube-ssh">Option 3 - Minikube ssh</h2>
-<pre><code>➜  ~ kubectl get endpoints
+<pre tabindex="0"><code>➜  ~ kubectl get endpoints
 NAME         ENDPOINTS                     AGE
 kubernetes   192.168.49.2:8443             3h12m
 my-nginx     172.17.0.3:80,172.17.0.4:80   3h12m
-</code></pre><pre><code>➜  ~ minikube ssh
+</code></pre><pre tabindex="0"><code>➜  ~ minikube ssh
 Last login: Tue Apr 13 19:22:22 2021 from 192.168.49.1
 docker@minikube:~$ curl 172.17.0.3:80
 &lt;!DOCTYPE html&gt;
@@ -168,7 +170,7 @@ docker@minikube:~$ curl 172.17.0.3:80
 ...
 </code></pre><h2 id="option-4---nodeport">Option 4 - NodePort</h2>
 <p>We will change our <code>Service</code> to use a <code>NodePort</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1  </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1  </span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service  </span>
 <span style="color:#f92672">metadata</span>:  
   <span style="color:#f92672">name</span>: <span style="color:#ae81ff">my-nginx  </span>
@@ -180,7 +182,7 @@ docker@minikube:~$ curl 172.17.0.3:80
       <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP  </span>
   <span style="color:#f92672">selector</span>:  
     <span style="color:#f92672">run</span>: <span style="color:#ae81ff">my-nginx</span>
-</code></pre></div><pre><code>➜  ~ kubectl get services
+</code></pre></div><pre tabindex="0"><code>➜  ~ kubectl get services
 NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
 kubernetes   ClusterIP   10.96.0.1      &lt;none&gt;        443/TCP        3h40m
 my-nginx     NodePort    10.109.50.51   &lt;none&gt;        80:30305/TCP   3h40m
@@ -190,7 +192,7 @@ KubeDNS is running at https://192.168.49.2:8443/api/v1/namespaces/kube-system/se
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 </code></pre><p>Use the Kubernetes node IP from the cluster info with the <code>NodePort</code> from the service:</p>
-<pre><code>curl 192.168.49.2:30305
+<pre tabindex="0"><code>curl 192.168.49.2:30305
 </code></pre><p>Ref: <a href="https://kubernetes.io/docs/concepts/services-networking/service/#nodeport">https://kubernetes.io/docs/concepts/services-networking/service/#nodeport</a></p>
 <h2 id="other-notes">Other notes</h2>
 <p>General info on accessing your cluster:

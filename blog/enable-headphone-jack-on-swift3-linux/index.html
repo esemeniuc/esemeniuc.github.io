@@ -66,6 +66,8 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
 </head>
 
   <body>
@@ -75,7 +77,7 @@ if (!doNotTrack) {
   
   <div class="avatar">
     <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg" alt="Eric Semeniuc">
-    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg"></a>
+    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg" alt=""></a>
   </div>
   
   <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
@@ -91,18 +93,18 @@ if (!doNotTrack) {
   
   <div id="contentBody">
     <h2 id="final-solution">Final solution</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#e6db74">&#34;options snd-hda-intel model=alc256-asus-mic&#34;</span> &gt;&gt; /etc/modprobe.d/sound.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat <span style="color:#e6db74">&#34;options snd-hda-intel model=alc256-asus-mic&#34;</span> &gt;&gt; /etc/modprobe.d/sound.conf
 </code></pre></div><p>Then restart</p>
 <h3 id="for-testing">For Testing</h3>
 <h4 id="stop-pulseaudio">Stop pulseaudio</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl --user stop pulseaudio.socket
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl --user stop pulseaudio.socket
 systemctl --user stop pulseaudio.service
 </code></pre></div><h4 id="remove-sound-driver">Remove sound driver</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo modprobe -r snd_hda_intel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo modprobe -r snd_hda_intel
 </code></pre></div><h4 id="switch-driver-modes">Switch driver modes</h4>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo modprobe snd_hda_intel model<span style="color:#f92672">=</span>alc256-asus-mic
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo modprobe snd_hda_intel model<span style="color:#f92672">=</span>alc256-asus-mic
 </code></pre></div><h4 id="re-enable-pulseaudio">Re-enable pulseaudio</h4>
-<pre><code>systemctl --user start pulseaudio.socket
+<pre tabindex="0"><code>systemctl --user start pulseaudio.socket
 systemctl --user start pulseaudio.service
 </code></pre>
   </div>

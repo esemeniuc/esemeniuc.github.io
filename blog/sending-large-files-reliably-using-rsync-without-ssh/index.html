@@ -66,6 +66,8 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+  
 </head>
 
   <body>
@@ -75,7 +77,7 @@ if (!doNotTrack) {
   
   <div class="avatar">
     <img class="avatarMask" src="https://semeniuc.ml//img/avatar.jpg" alt="Eric Semeniuc">
-    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg"></a>
+    <a href="https://semeniuc.ml/"><img class="avatar-border" src="https://semeniuc.ml//img/avatar-border.svg" alt=""></a>
   </div>
   
   <h2><a class="author" href="https://semeniuc.ml/">Eric Semeniuc</a></h2>
@@ -103,7 +105,7 @@ if (!doNotTrack) {
 </ol>
 <h2 id="setup">Setup</h2>
 <h3 id="sender">Sender</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a config file to set up rsync</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a config file to set up rsync</span>
 cat &gt; rsyncd.conf <span style="color:#e6db74">&lt;&lt;EOF
 </span><span style="color:#e6db74">[homedir]
 </span><span style="color:#e6db74">    path = /home/%RSYNC_USER_NAME%
@@ -115,12 +117,12 @@ cat &gt; rsyncd.conf <span style="color:#e6db74">&lt;&lt;EOF
 <span style="color:#75715e"># start rsync server</span>
 rsync --daemon --config rsyncd.conf --port <span style="color:#ae81ff">8000</span>
 </code></pre></div><p>Check that directory is shared with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync rsync://localhost:1837
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync rsync://localhost:1837
 </code></pre></div><p>Output:</p>
-<pre><code>me@a:~$ rsync rsync://localhost:1837
+<pre tabindex="0"><code>me@a:~$ rsync rsync://localhost:1837
 homedir           &quot;my home folder&quot;
 </code></pre><h3 id="receiver">Receiver</h3>
-<pre><code>rsync --progress --compress --inplace --checksum rsync://MY_HOST:1837/homedir/file.foo .
+<pre tabindex="0"><code>rsync --progress --compress --inplace --checksum rsync://MY_HOST:1837/homedir/file.foo .
 </code></pre><p>Flags:
 <code>--progress</code>: show to progress of the copy</p>
 <p><code>--compress</code>: use file compression to speed up copying on slow links</p>
