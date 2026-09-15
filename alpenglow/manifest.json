@@ -899,6 +899,15 @@
     "messages": 17,
     "participants": 4
   },
+  "identityDiagram": {
+    "id": "block-identities",
+    "title": "Block IDs and bank IDs name different things",
+    "file": "block-identities.svg",
+    "png": "block-identities.png",
+    "transitions": ["I01", "I02", "I03", "I04"],
+    "exampleSlot": 104,
+    "checkout": "a3923f4a76dcd975a6d935d949ef2a4a7373e6a3"
+  },
   "tooltipCounts": {
     "State": 71,
     "Transition": 91,
@@ -906,6 +915,7 @@
     "Participant": 4,
     "Network message": 9,
     "Local action": 7,
-    "Internal event": 1
+    "Internal event": 1,
+    "Identity explanation": 14
   }
 }

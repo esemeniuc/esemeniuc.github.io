@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 990" width="1160" height="990" role="group" aria-labelledby="identity-title identity-description">
+  <title id="identity-title">Block ID and bank ID: one slot, two local bank histories</title>
+  <desc id="identity-description">An UpdateParent marker changes the parent of slot 104 from block P in slot 103 to block Q in slot 102. The leader replaces local bank 42 with 43. A receiving validator replaces local bank 900 with 901. Both compute the same block ID H104 for the completed block. All numbers and hash names are illustrative.</desc>
+  <defs>
+    <marker id="identity-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#486c88"/></marker>
+  </defs>
+  <rect width="1160" height="990" fill="#fbfdff"/>
+  <g font-family="Noto Sans, Arial, sans-serif" fill="#17314b">
+    <g class="sequence-step" data-tip-key="identity-slot" tabindex="0" role="button" aria-label="Slot: a position in the schedule. Show explanation">
+      <title>Slot: the position in the schedule. A parent change can replace a bank without changing its slot.</title>
+      <rect x="24" y="16" width="352" height="94" rx="10" fill="#eff4f8" stroke="#c7d7e5"/>
+      <text x="44" y="43" font-size="12" letter-spacing="1.2" fill="#587085">SLOT · SCHEDULE POSITION</text>
+      <text x="44" y="73" font-size="23" font-weight="700">104 stays 104</text>
+      <text x="44" y="95" font-size="15">A slot alone does not identify a block.</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-block-id" tabindex="0" role="button" aria-label="Block ID: shared block identity. Show explanation">
+      <title>Block ID: a cryptographic identity computed from the block's shreds and selected parent. Nodes with the same block compute the same ID.</title>
+      <rect x="404" y="16" width="352" height="94" rx="10" fill="#dcf3f3" stroke="#74aaa9"/>
+      <text x="424" y="43" font-size="12" letter-spacing="1.2" fill="#316d70">BLOCK ID · SHARED IDENTITY</text>
+      <text x="424" y="73" font-size="23" font-weight="700">Same block → same hash</text>
+      <text x="424" y="95" font-size="15">Names exact block data and its parent.</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-bank-id" tabindex="0" role="button" aria-label="Bank ID: local execution instance. Show explanation">
+      <title>Bank ID: a local u64 counter assigned when a Bank is created. It is not a content hash and must not be compared across validators or restarts.</title>
+      <rect x="784" y="16" width="352" height="94" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+      <text x="804" y="43" font-size="12" letter-spacing="1.2" fill="#466993">BANK ID · LOCAL INSTANCE</text>
+      <text x="804" y="73" font-size="23" font-weight="700">New bank → new number</text>
+      <text x="804" y="95" font-size="15">Each validator allocates its own IDs.</text>
+    </g>
+
+    <text x="24" y="148" font-size="17" font-weight="700">LEADER</text>
+    <text x="650" y="148" font-size="17" font-weight="700">RECEIVING VALIDATOR</text>
+    <g class="sequence-step" data-tip-key="identity-leader-before" tabindex="0" role="button" aria-label="Leader before UpdateParent: slot 104, bank ID 42, parent P. Show explanation">
+      <title>Before UpdateParent: the leader has created an optimistic Bank for slot 104 on parent P, the block in slot 103.</title>
+      <rect x="24" y="166" width="486" height="128" rx="10" fill="#fff0d6" stroke="#b47821"/>
+      <text x="46" y="196" font-size="14" fill="#896020">BEFORE · OPTIMISTIC BANK</text>
+      <text x="46" y="229" font-size="23" font-weight="700">slot 104 · bank_id 42</text>
+      <text x="46" y="258" font-size="18">parent = (103, P)</text>
+      <text x="46" y="280" font-size="15">Child block ID is not yet available.</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-receiver-before" tabindex="0" role="button" aria-label="Receiver before UpdateParent: slot 104, bank ID 900, parent P. Show explanation">
+      <title>In this example the receiver has already created its own optimistic Bank for slot 104. Its local bank ID is 900, not the leader's 42.</title>
+      <rect x="650" y="166" width="486" height="128" rx="10" fill="#fff0d6" stroke="#b47821"/>
+      <text x="672" y="196" font-size="14" fill="#896020">BEFORE · OPTIMISTIC BANK</text>
+      <text x="672" y="229" font-size="23" font-weight="700">slot 104 · bank_id 900</text>
+      <text x="672" y="258" font-size="18">parent = (103, P)</text>
+      <text x="672" y="280" font-size="15">Local IDs need not match the leader.</text>
+    </g>
+
+    <g class="sequence-step" data-tip-key="identity-I01" tabindex="0" role="button" aria-label="I01: the ready parent differs; emit UpdateParent. Show explanation">
+      <title>I01: ParentReady selects Q instead of P. The leader drains old record input and emits UpdateParent in the shred stream.</title>
+      <path d="M267 294V325H400V353" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#identity-arrow)"/>
+      <text x="425" y="331" font-size="17" fill="#425b71">I01 · Ready parent Q differs from P</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-marker" tabindex="0" role="button" aria-label="UpdateParent wire marker: new parent slot 102 and new parent block ID Q. Show explanation">
+      <title>UpdateParent carries new_parent_slot and new_parent_block_id. It identifies a network block, not another validator's local bank. This is a block marker carried in shreds.</title>
+      <rect x="214" y="355" width="732" height="125" rx="12" fill="#ede5ff" stroke="#957ab9"/>
+      <text x="580" y="386" text-anchor="middle" font-size="23" font-weight="700">UpdateParent · carried in shreds</text>
+      <text x="580" y="419" text-anchor="middle" font-size="19" font-family="ui-monospace, Consolas, monospace">new_parent_slot = 102</text>
+      <text x="580" y="447" text-anchor="middle" font-size="19" font-family="ui-monospace, Consolas, monospace">new_parent_block_id = Q</text>
+      <text x="580" y="470" text-anchor="middle" font-size="15">The marker contains no bank_id.</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-I02" tabindex="0" role="button" aria-label="I02: the leader creates its replacement bank. Show explanation">
+      <title>I02: The leader clears its optimistic Bank and creates a new Bank for the same slot on parent Q. The local bank ID changes.</title>
+      <path d="M400 480V514H267V557" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#identity-arrow)"/>
+      <text x="35" y="539" font-size="17" fill="#425b71">I02 · Recreate locally</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-I03" tabindex="0" role="button" aria-label="I03: replay creates the receiver's replacement bank. Show explanation">
+      <title>I03: The receiving validator applies the marker and recreates its local Bank from the matching selected parent. Parent state must be available. Its counter is independent of the leader's.</title>
+      <path d="M760 480V514H893V557" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#identity-arrow)"/>
+      <text x="656" y="539" font-size="17" fill="#425b71">I03 · Replay recreates locally</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-leader-after" tabindex="0" role="button" aria-label="Leader after UpdateParent: slot 104, bank ID 43, parent Q. Show explanation">
+      <title>The leader's replacement Bank still represents slot 104, but its local bank ID is now 43 and it uses parent block Q in slot 102.</title>
+      <rect x="24" y="560" width="486" height="128" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+      <text x="46" y="590" font-size="14" fill="#466993">AFTER · REPLACEMENT BANK</text>
+      <text x="46" y="623" font-size="23" font-weight="700">slot 104 · bank_id 43</text>
+      <text x="46" y="652" font-size="18">parent = (102, Q)</text>
+      <text x="46" y="675" font-size="15">Same slot. Different execution instance.</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-receiver-after" tabindex="0" role="button" aria-label="Receiver after UpdateParent: slot 104, bank ID 901, parent Q. Show explanation">
+      <title>The receiver's replacement Bank uses the same parent Q. Its local bank ID is 901. The example assumes no other bank allocations between these two instances.</title>
+      <rect x="650" y="560" width="486" height="128" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+      <text x="672" y="590" font-size="14" fill="#466993">AFTER · REPLACEMENT BANK</text>
+      <text x="672" y="623" font-size="23" font-weight="700">slot 104 · bank_id 901</text>
+      <text x="672" y="652" font-size="18">parent = (102, Q)</text>
+      <text x="672" y="675" font-size="15">Same parent. Independent local counter.</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-I04" tabindex="0" role="button" aria-label="I04: complete the block and determine its shared block ID. Show explanation">
+      <title>I04: Both nodes determine the same block ID from the same complete block data and selected parent. This does not require matching bank IDs or a finality certificate.</title>
+      <path d="M267 688V786" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#identity-arrow)"/>
+      <path d="M893 688V786" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#identity-arrow)"/>
+      <text x="580" y="728" text-anchor="middle" font-size="18" font-weight="700" fill="#425b71">I04 · Complete block data → shared block identity</text>
+      <text x="580" y="754" text-anchor="middle" font-size="16" fill="#587085">The block ID can be computed without executing transactions.</text>
+    </g>
+    <g class="sequence-step" data-tip-key="identity-complete" tabindex="0" role="button" aria-label="Completed block: slot 104, shared block ID H104, different local bank IDs. Show explanation">
+      <title>Completed block identity is (104, H104) on both nodes. In Alpenglow H104 is the double Merkle root over every FEC-set root plus a parent-information leaf. It is distinct from the execution bank hash. A block ID does not itself establish finality.</title>
+      <rect x="170" y="790" width="820" height="130" rx="12" fill="#dcf3f3" stroke="#74aaa9"/>
+      <text x="580" y="822" text-anchor="middle" font-size="15" fill="#316d70">COMPLETE BLOCK · SAME ID ON BOTH NODES</text>
+      <text x="580" y="856" text-anchor="middle" font-size="26" font-weight="700">(slot 104, block_id H104)</text>
+      <text x="580" y="886" text-anchor="middle" font-size="18">Leader bank_id = 43 · Receiver bank_id = 901</text>
+      <text x="580" y="909" text-anchor="middle" font-size="15">These local bank IDs identify different objects for the same block.</text>
+    </g>
+    <text x="580" y="954" text-anchor="middle" font-size="16" fill="#587085">Illustrative IDs: P, Q, and H104 stand for full cryptographic hashes.</text>
+    <text x="580" y="979" text-anchor="middle" font-size="16" fill="#587085">Bank hash is a separate execution-state hash. Bank ID is only a local instance number.</text>
+  </g>
+</svg>
