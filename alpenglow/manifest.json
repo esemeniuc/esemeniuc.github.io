@@ -899,6 +899,16 @@
     "messages": 17,
     "participants": 4
   },
+  "pipelineDiagram": {
+    "id": "update-parent-pipeline",
+    "title": "How UpdateParent reaches the BAM scheduler",
+    "file": "update-parent-pipeline.svg",
+    "png": "update-parent-pipeline.png",
+    "handoffs": ["U01", "U02", "U03", "U04", "U05", "U06", "U07", "U08", "U09"],
+    "sideBranches": ["B1", "B2"],
+    "networkLegs": 1,
+    "revisions": {"leader":"b8f1c72d5493ba5651c603222f64b54c40331120","bam":"6cf02d0370b1401b9824906173c53698dd617892","internalValidator":"33d382338324cc795ad985caa873303831f7bb9f","protocol":"9d8f13df8db085099bfd7ebe3a53a4ea0df76762"}
+  },
   "identityDiagram": {
     "id": "block-identities",
     "title": "Block IDs and bank IDs name different things",
@@ -916,6 +926,7 @@
     "Network message": 9,
     "Local action": 7,
     "Internal event": 1,
-    "Identity explanation": 14
+    "Identity explanation": 14,
+    "Pipeline explanation": 23
   }
 }

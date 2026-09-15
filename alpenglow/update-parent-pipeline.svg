@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 1410" width="1320" height="1410" role="group" aria-labelledby="pipeline-title pipeline-description">
+<title id="pipeline-title">How UpdateParent reaches the BAM scheduler</title>
+<desc id="pipeline-description">The leader drains records, emits UpdateParent through the broadcast entry queue, encodes shreds, and mirrors them over one UDP leg to BAM. Inside BAM, two fetch queues lead to signature verification, window and blockstore, a parent notification plus separate replay wake, and shared-bank publication to the BAM scheduler. The 100 ms replay fallback is a possible tail, not the normal delivery delay. Side branches show leader storage backpressure and parallel shred retransmission. This depicts the normal UDP path at the cited revisions.</desc>
+<defs>
+<marker id="pipeline-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#486c88"/></marker>
+<marker id="pipeline-network" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#167ca8"/></marker>
+</defs>
+<rect width="1320" height="1410" fill="#fbfdff"/>
+<g font-family="Noto Sans, Arial, sans-serif" fill="#17314b">
+<rect x="20" y="18" width="1280" height="65" rx="10" fill="#12324d"/>
+<text x="43" y="45" font-size="21" fill="#fff" font-weight="700">UpdateParent uses shreds; the BAM scheduling gRPC stream has no UpdateParent message.</text>
+<text x="43" y="69" font-size="17" fill="#d7e7f3">Connection setup advertises BAM's embedded-validator UDP TVU address in shred_socks.</text>
+<rect x="20" y="108" width="560" height="830" rx="13" fill="#f0f4fa" stroke="#c7d7e5"/>
+<text x="43" y="143" font-size="22" font-weight="700">LEADER PROCESS · agavebam</text>
+<rect x="694" y="108" width="606" height="1150" rx="13" fill="#edf6fc" stroke="#a8c8de"/>
+<text x="718" y="143" font-size="22" font-weight="700">BAM NODE PROCESS</text>
+<rect x="710" y="162" width="574" height="897" rx="10" fill="#fbfdff" stroke="#b8cddb" stroke-dasharray="6 4"/>
+<text x="724" y="174" font-size="13" fill="#587085">Embedded Solana validator · bam-node-validator</text>
+  <g class="sequence-step" data-tip-key="pipeline-control" tabindex="0" role="button" aria-label="Parent decision → block creation. Show explanation"><title>Before a marker exists, consensus sends a Votor event through a bounded 1,000-event queue. The event loop forwards leader-window information through a bounded seven-item queue. The first send blocks on full; the second can drop on full. Block creation prioritizes this control input over records.</title>
+    <rect x="44" y="180" width="512" height="126" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+<text x="61" y="209" font-size="21" font-weight="700">Parent decision → block creation</text>
+<text x="61" y="236" font-size="17" >Votor events: bounded 1,000</text>
+<text x="61" y="259" font-size="17" >Leader-window queue: bounded 7</text>
+<text x="61" y="282" font-size="17" >Control event is selected before records.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-bcl" tabindex="0" role="button" aria-label="Block-creation loop. Show explanation"><title>On a parent mismatch, stop record admission and drain queued and already-reserved records before emitting UpdateParent. The drain can wait for outstanding senders. Marker enqueue occurs before waiting for the selected parent's replay and creating the leader's replacement bank.</title>
+    <rect x="44" y="370" width="512" height="130" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+<text x="61" y="399" font-size="21" font-weight="700">Block-creation loop</text>
+<text x="61" y="426" font-size="17" >Drain the bounded 1,023-record channel.</text>
+<text x="61" y="449" font-size="17" >Emit UpdateParent after all old-bank records.</text>
+<text x="61" y="472" font-size="17" >A matching optimistic parent emits no marker.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-broadcast" tabindex="0" role="button" aria-label="solBroadcast. Show explanation"><title>The unbounded WorkingBankEntryOrMarker channel carries both entries and markers. A marker interrupts entry coalescing; it does not wait for the 50 ms entry timer. Broadcast flushes preceding entries, then encodes a complete marker FEC set immediately. If this is the first component of the slot, it prepends a header and synchronously stores the index-zero shred before dispatch.</title>
+    <rect x="44" y="570" width="306" height="143" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+<text x="61" y="599" font-size="21" font-weight="700">solBroadcast</text>
+<text x="61" y="626" font-size="15" >Serialize and encode the marker.</text>
+<text x="61" y="649" font-size="15" >32 data + 32 coding shreds</text>
+<text x="61" y="672" font-size="15" >Marker interrupts entry batching.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-storage" tabindex="0" role="button" aria-label="Leader storage. Show explanation"><title>Broadcast enqueues each shred batch to the leader's blockstore channel before the network channel. Both are bounded at 4,096 batches and use try_send with a blocking fallback. A full storage channel can therefore stall network dispatch, even though storage has a separate consumer.</title>
+    <rect x="392" y="570" width="164" height="143" rx="10" fill="#fff0d6" stroke="#b47821"/>
+<text x="409" y="599" font-size="16" font-weight="700">Leader storage</text>
+<text x="409" y="626" font-size="14" >B1 · Enqueue first</text>
+<text x="409" y="649" font-size="14" >Bounded 4,096</text>
+<text x="409" y="672" font-size="14" >shred batches</text>
+<text x="409" y="695" font-size="14" >Blocks when full</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-tx" tabindex="0" role="button" aria-label="solBroadcastTx. Show explanation"><title>Network egress consumes a bounded 4,096-batch channel. The normal UDP path attempts the Turbine send first, then mirrors all shreds to external addresses including BAM's advertised TVU address. This direct copy does not wait for a Turbine relay. Optional XDP uses its own transmit path.</title>
+    <rect x="44" y="790" width="512" height="112" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+<text x="61" y="819" font-size="21" font-weight="700">solBroadcastTx</text>
+<text x="61" y="846" font-size="17" >UDP: attempt Turbine send, then BAM mirror.</text>
+<text x="61" y="869" font-size="17" >Mirror all 64 marker shreds to BAM TVU.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-receive" tabindex="0" role="button" aria-label="UDP shred receiver. Show explanation"><title>BAM advertises the embedded validator's UDP TVU address in shred_socks during gRPC configuration. Marker shreds arrive directly at this socket. The 5 ms coalescing deadline begins at receive-call entry; a full 64-packet batch exits early, and arrival after a long idle can incur almost no coalescing. The setting is not a fixed 5 ms delay.</title>
+    <rect x="724" y="180" width="526" height="108" rx="10" fill="#dcf3f3" stroke="#74aaa9"/>
+<text x="741" y="209" font-size="21" font-weight="700">UDP shred receiver</text>
+<text x="741" y="236" font-size="17" >Up to 64 packets per receive batch.</text>
+<text x="741" y="259" font-size="17" >5 ms coalescing setting: roughly 0–5 ms wait.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-modifier" tabindex="0" role="button" aria-label="Shred packet modifier. Show explanation"><title>The packet modifier consumes one evicting queue of 65,536 packet batches, filters packets, and sends to a second evicting queue with the same capacity. Both are serial hops shared with other incoming shreds. Overload can evict or drop packets.</title>
+    <rect x="724" y="360" width="526" height="74" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+<text x="741" y="389" font-size="21" font-weight="700">Shred packet modifier</text>
+<text x="741" y="416" font-size="17" >Filter and mark packets before verification.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-verify" tabindex="0" role="button" aria-label="Shred signature verification. Show explanation"><title>After signature verification, shreds are sent directly to the unbounded verified-shred queue for window service. Retransmit receives a separate copy through an evicting queue. The signature-verification receive timeout wakes on arrival; it is not a one-second batching delay.</title>
+    <rect x="724" y="504" width="340" height="95" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+<text x="741" y="533" font-size="19" font-weight="700">Shred signature verification</text>
+<text x="741" y="560" font-size="15" >Verify shreds; fan out locally.</text>
+<text x="741" y="583" font-size="15" >Receive wakes when input arrives.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-retransmit" tabindex="0" role="button" aria-label="Retransmit. Show explanation"><title>Retransmit is a parallel side branch after signature verification, with an evicting queue of 16,384 batches. Local blockstore insertion does not wait for the retransmit stage to send packets.</title>
+    <rect x="1100" y="504" width="150" height="121" rx="10" fill="#eff4f8" stroke="#9aafc0"/>
+<text x="1117" y="533" font-size="17" font-weight="700">Retransmit</text>
+<text x="1117" y="560" font-size="14" >B2 · Parallel</text>
+<text x="1117" y="583" font-size="14" >Evicting 16,384</text>
+<text x="1117" y="606" font-size="14" >shred batches</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-window" tabindex="0" role="button" aria-label="Window service → blockstore. Show explanation"><title>Window service drains available verified-shred batches and synchronously inserts them into blockstore. UpdateParent metadata can be recognized from the preceding DATA_COMPLETE boundary shred and the marker's first shred. Blockstore writes the selected parent and replay offset before sending notifications. Missing earlier shreds can leave consumed unchanged, suppressing the ordinary ledger wake.</title>
+    <rect x="724" y="669" width="526" height="121" rx="10" fill="#e8f0fd" stroke="#6587ad"/>
+<text x="741" y="698" font-size="21" font-weight="700">Window service → blockstore</text>
+<text x="741" y="725" font-size="17" >Drain available batches; recover shreds.</text>
+<text x="741" y="748" font-size="17" >Parse parent metadata and write the database.</text>
+<text x="741" y="771" font-size="17" >Endpoint 1: marker metadata is recognized.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-replay" tabindex="0" role="button" aria-label="Replay loop. Show explanation"><title>UpdateParentSignal is a bounded 4,096-slot-notification queue with a nonblocking send that can drop on full. Replay drains it before generating banks, but its blocking select waits only for ordinary ledger updates, bank-forks commands, root signals, or a 100 ms timeout. Clearing an obsolete bank waits for outstanding verification and execution. A parent must be locally frozen with a matching block ID. The normal marker-replay path also handles bank abandonment.</title>
+    <rect x="724" y="902" width="526" height="143" rx="10" fill="#fff0d6" stroke="#b47821"/>
+<text x="741" y="931" font-size="21" font-weight="700">Replay loop</text>
+<text x="741" y="958" font-size="17" >Drain UpdateParentSignal at loop start.</text>
+<text x="741" y="981" font-size="17" >Clear / recreate from the matching frozen parent.</text>
+<text x="741" y="1004" font-size="17" >Idle select omits this queue; 100 ms fallback.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-forwarder" tabindex="0" role="button" aria-label="BAM forwarder / scheduler thread. Show explanation"><title>The embedded validator and BAM forwarder share the same BankForks and SharableBanks objects inside one BAM process. Replay publishes the working bank through ArcSwap; the forwarder samples it every loop. There is no extra network RPC or IPC handoff. At the inspected BAM revision, the speculative-bank cache compares slot only, so publication of a same-slot replacement does not by itself prove the auction adopted it.</title>
+    <rect x="724" y="1123" width="526" height="107" rx="10" fill="#d9f4e6" stroke="#18865e"/>
+<text x="741" y="1152" font-size="21" font-weight="700">BAM forwarder / scheduler thread</text>
+<text x="741" y="1179" font-size="17" >Read the shared working-bank ArcSwap each loop.</text>
+<text x="741" y="1202" font-size="17" >Observed bank ≠ guaranteed auction adoption.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U01" tabindex="0" role="button" aria-label="U01 · Pipeline handoff. Show explanation"><title>ParentReady names a different parent. The block-creation loop handles this event before new records, then shuts down and drains the old record channel.</title>
+    <path d="M300 306V366" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#pipeline-arrow)"/>
+<text x="314" y="341" font-size="17" fill="#425b71">U01 · Parent mismatch</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U02" tabindex="0" role="button" aria-label="U02 · Pipeline handoff. Show explanation"><title>PohRecorder::send_marker enqueues UpdateParent on the unbounded entry-and-marker channel. The marker follows all old-bank records and can wait behind prior broadcast work.</title>
+    <path d="M197 500V566" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#pipeline-arrow)"/>
+<text x="213" y="530" font-size="17" fill="#425b71">U02 · Unbounded</text>
+<text x="213" y="553" font-size="16" fill="#425b71">WorkingBankEntryOrMarker</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-B1" tabindex="0" role="button" aria-label="B1 · Leader storage. Show explanation"><title>The storage side branch is enqueued first. It is not a network hop, but a full bounded storage queue blocks the producer before it can enqueue the batch for transmission.</title>
+    <path d="M350 622H388" fill="none" stroke="#486c88" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#pipeline-arrow)"/>
+
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U03" tabindex="0" role="button" aria-label="U03 · Pipeline handoff. Show explanation"><title>After the storage enqueue, broadcast hands the batch to the bounded 4,096-batch network-egress queue. A full queue blocks rather than silently dropping the leader's own shred batch.</title>
+    <path d="M197 713V786" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#pipeline-arrow)"/>
+<text x="213" y="744" font-size="17" fill="#425b71">U03 · Bounded 4,096</text>
+<text x="213" y="768" font-size="16" fill="#425b71">shred batches → transmit</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U04" tabindex="0" role="button" aria-label="U04 · Pipeline handoff. Show explanation"><title>One direct UDP network leg carries all marker shreds from the leader to BAM's embedded validator. The endpoint comes from shred_socks in configuration. UpdateParent is absent from the BAM scheduling gRPC message types.</title>
+    <path d="M556 846H635V234H720" fill="none" stroke="#167ca8" stroke-width="4" marker-end="url(#pipeline-network)"/>
+
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U05" tabindex="0" role="button" aria-label="U05 · Pipeline handoff. Show explanation"><title>The UDP receiver hands packet batches to the modifier through the first evicting queue. Its capacity is measured in packet batches, not individual packets.</title>
+    <path d="M987 288V356" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#pipeline-arrow)"/>
+<text x="739" y="318" font-size="17" fill="#425b71">U05 · Evicting queue #1</text>
+<text x="739" y="343" font-size="16" fill="#425b71">65,536 packet batches</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U06" tabindex="0" role="button" aria-label="U06 · Pipeline handoff. Show explanation"><title>The modifier forwards into a second serial evicting queue of 65,536 packet batches before signature verification.</title>
+    <path d="M894 434V500" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#pipeline-arrow)"/>
+<text x="911" y="463" font-size="17" fill="#425b71">U06 · Evicting queue #2</text>
+<text x="911" y="487" font-size="16" fill="#425b71">65,536 packet batches</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-B2" tabindex="0" role="button" aria-label="B2 · Parallel retransmit. Show explanation"><title>Signature verification sends a copy to retransmit on a parallel branch. It sends directly to window service as well; retransmit is not on the serial local-replay path.</title>
+    <path d="M1064 550H1096" fill="none" stroke="#486c88" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#pipeline-arrow)"/>
+
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U07" tabindex="0" role="button" aria-label="U07 · Pipeline handoff. Show explanation"><title>Verified shreds enter the unbounded window-service channel. Window's receive timeout wakes on input rather than adding a fixed 200 ms wait.</title>
+    <path d="M894 599V665" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#pipeline-arrow)"/>
+<text x="911" y="629" font-size="17" fill="#425b71">U07 · Unbounded</text>
+<text x="911" y="653" font-size="16" fill="#425b71">verified-shred queue</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U08" tabindex="0" role="button" aria-label="U08 · Pipeline handoff. Show explanation"><title>Blockstore sends an ordinary capacity-one ledger wake only when its wake condition holds, then separately enqueues UpdateParentSignal. A recognized marker can leave consumed unchanged when an earlier shred is missing. Replay does not select on the parent-signal queue, so another event or the 100 ms fallback may be needed. The general wake is also sent before the parent signal, which admits an ordering race.</title>
+    <path d="M1218 790V898" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#pipeline-arrow)"/>
+<text x="739" y="821" font-size="16" fill="#425b71">U08 · UpdateParentSignal: bounded 4,096</text>
+<text x="739" y="847" font-size="16" fill="#425b71">Separate ledger wake: capacity 1</text>
+<text x="739" y="873" font-size="15" fill="#425b71">A queued parent signal need not wake replay.</text>
+  </g>
+  <g class="sequence-step" data-tip-key="pipeline-U09" tabindex="0" role="button" aria-label="U09 · Pipeline handoff. Show explanation"><title>Replay inserts the replacement bank and publishes the working-bank pointer. BAM's forwarder observes this shared state on a loop iteration. Metadata recognition, publication, suffix execution, and scheduler adoption remain different milestones.</title>
+    <path d="M1218 1045V1119" fill="none" stroke="#486c88" stroke-width="2" marker-end="url(#pipeline-arrow)"/>
+<text x="739" y="1075" font-size="17" fill="#425b71">U09 · Publish via BankForks / ArcSwap</text>
+<text x="739" y="1100" font-size="16" fill="#425b71">Endpoint 2 · shared memory, no RPC</text>
+  </g>
+<text x="615" y="746" font-size="19" fill="#167ca8" font-weight="700" transform="rotate(-90 615 746)">U04 · Direct UDP mirror · ONE network leg</text>
+<text x="43" y="924" font-size="13" fill="#587085">B1 storage can block egress. B2 retransmit does not block local replay.</text>
+<rect x="20" y="965" width="560" height="293" rx="12" fill="#edf8f6" stroke="#74aaa9"/>
+<text x="42" y="1001" font-size="22" font-weight="700">Expected latency under light load</text>
+<text x="42" y="1035" font-size="17" >One-way UDP + drain, encoding, verification, database</text>
+<text x="42" y="1060" font-size="17" >and thread/queue work + roughly 0–5 ms coalescing.</text>
+<text x="42" y="1096" font-size="18" font-weight="700">No fixed 50 ms marker-batching wait.</text>
+<text x="42" y="1126" font-size="18" font-weight="700">No fixed slot-length or 100 ms delivery delay.</text>
+<text x="42" y="1165" font-size="17" >100 ms is replay's idle fallback when no event wakes it.</text>
+<text x="42" y="1191" font-size="17" >Parent availability, backlog and repair can add delay.</text>
+<text x="42" y="1223" font-size="16" fill="#587085">Source analysis only; no measured median or tail.</text>
+<rect x="20" y="1284" width="1280" height="104" rx="12" fill="#fff0d6" stroke="#b47821"/>
+<text x="43" y="1317" font-size="21" font-weight="700">Keep three endpoints separate</text>
+<text x="43" y="1349" font-size="22" >1 · Metadata recognized     →     2 · Replacement bank published     →     3 · Scheduler adopts it</text>
+<text x="43" y="1377" font-size="17" fill="#765523">Earlier holes can still delay suffix replay. At the inspected BAM revision, the speculative-bank cache compares slot only.</text>
+</g>
+</svg>
